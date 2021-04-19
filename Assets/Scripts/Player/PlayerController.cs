@@ -67,7 +67,6 @@ namespace DASH.Player
             }
             else
             {
-                Debug.Log("q " + characterController.isGrounded + " " + canMove + " " + isRolling);
                 moveDirection.y -= gravity * Time.deltaTime;
                 characterController.Move(moveDirection * Time.deltaTime);
             }
