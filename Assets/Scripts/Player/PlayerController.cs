@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace DASH.Player
+namespace DASH._Player
 {
     [RequireComponent(typeof(CharacterController))]
 

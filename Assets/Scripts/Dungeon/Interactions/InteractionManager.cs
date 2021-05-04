@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Quest
+namespace DASH._Dungeon
 {
     public class InteractionManager : MonoBehaviour
     {

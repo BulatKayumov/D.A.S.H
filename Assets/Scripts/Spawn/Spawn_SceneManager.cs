@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DASH.Spawn
+namespace DASH._Spawn
 {
     public class Spawn_SceneManager : MonoBehaviour
     {

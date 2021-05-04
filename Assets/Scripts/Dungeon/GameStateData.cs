@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace _Quest
+namespace DASH._Dungeon
 {
     public struct RoomPrefab
     {

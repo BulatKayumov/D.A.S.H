@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DASH.Spawn
+namespace DASH._Spawn
 {
     public class Cube : MonoBehaviour
     {

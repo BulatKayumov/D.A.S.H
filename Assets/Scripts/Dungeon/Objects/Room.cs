@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace _Quest
+namespace DASH._Dungeon
 {
     public enum RoomType
     {
@@ -14,6 +14,7 @@ namespace _Quest
         public int index;
         public List<int> way;
         public DoorPlace[] doorPlaces;
+        public GameObject triggerCubesRoot;
         public Door door;
         //public List<ItemPlace> itemPlaces;
         public List<InteriorPlace> interiorPlaces;
@@ -58,6 +59,12 @@ namespace _Quest
                 }
             }
             return false;
+        }
+
+        public void EnterTrigger()
+        {
+            RoomEntry();
+            Destroy(triggerCubesRoot);
         }
 
         protected void RoomEntry()

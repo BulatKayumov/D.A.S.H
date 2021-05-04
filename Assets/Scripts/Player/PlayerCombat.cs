@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DASH.Player
+namespace DASH._Player
 {
     public class PlayerCombat : MonoBehaviour
     {

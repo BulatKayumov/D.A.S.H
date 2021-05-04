@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace _Quest
+namespace DASH._Dungeon
 {
     public class Interactable : MonoBehaviour
     {

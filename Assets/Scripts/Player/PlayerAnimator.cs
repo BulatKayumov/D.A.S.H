@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DASH.Player
+namespace DASH._Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
