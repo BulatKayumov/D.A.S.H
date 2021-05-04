@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace DASH.Player
+namespace DASH._Player
 {
     [RequireComponent(typeof(CharacterController))]
 
@@ -34,7 +34,7 @@ namespace DASH.Player
         {
             characterController = GetComponent<CharacterController>();
             // Lock cursor
-           //  Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
             //Cursor.visible = false;
             animator = GetComponent<PlayerAnimator>();
             combat = GetComponent<PlayerCombat>();
