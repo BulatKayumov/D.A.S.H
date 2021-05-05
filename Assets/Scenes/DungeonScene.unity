@@ -699,8 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9afa84f3449ca4598e439eb76e3128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomsCount: 10
-  maxMapSize: 20
+  roomsCount: 50
+  maxMapSize: 35
   tileSize: 10.1
   StartRoom: {fileID: 1715056211}
   ExitRoom: {fileID: 3546902717810116575, guid: a6c90e0013db2ef4db026c99382ae7f4, type: 3}
