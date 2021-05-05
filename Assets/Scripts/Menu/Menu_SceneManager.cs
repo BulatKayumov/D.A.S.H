@@ -23,5 +23,10 @@ namespace DASH._Menu
             Debug.Log("load 1");
             SceneManager.LoadScene(1);
         }
+        public void NewMenu()
+        {
+            Debug.Log("load 0");
+            SceneManager.LoadScene(0);
+        }
     }
 }

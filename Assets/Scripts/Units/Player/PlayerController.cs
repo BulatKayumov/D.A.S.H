@@ -35,7 +35,7 @@ namespace DASH._Player
             characterController = GetComponent<CharacterController>();
             // Lock cursor
             Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
+            Cursor.visible = false;
             animator = GetComponent<PlayerAnimator>();
             combat = GetComponent<PlayerCombat>();
         }
