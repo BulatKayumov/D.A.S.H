@@ -93,6 +93,8 @@ namespace DASH._Dungeon
 
         public void AddDoor()
         {
+            WallEntrance doorEntrance = Instantiate(GameStateData.instance.wallEntrancePrefab, gameObject.transform);
+            doorEntrance.SetPosition(this.Coordinates + selectedDoorPlace.cords, selectedDoorPlace.orientation);
             Door newDoor = Instantiate(GameStateData.instance.doorPrefab, gameObject.transform);
             newDoor.SetPosition(this.Coordinates + selectedDoorPlace.cords, selectedDoorPlace.orientation);
             this.door = newDoor;

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DASH._Spawn
+namespace DASH._Menu
 {
-    public class Spawn_GameManager : MonoBehaviour
+    public class Menu_GameManager : MonoBehaviour
     {
 
         // Start is called before the first frame update

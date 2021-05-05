@@ -15,6 +15,7 @@ namespace DASH._Dungeon
                 RaycastHit raycastHit;
                 if (Physics.Raycast(ray, out raycastHit))
                 {
+                    Debug.Log(raycastHit.collider.gameObject.name);
                     if (raycastHit.collider.GetComponent<Interactable>() != null)
                     {
                         raycastHit.collider.GetComponent<Interactable>().Interact();

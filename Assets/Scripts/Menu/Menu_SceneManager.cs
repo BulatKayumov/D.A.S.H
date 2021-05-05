@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DASH._Spawn
+namespace DASH._Menu
 {
-    public class Spawn_SceneManager : MonoBehaviour
+    public class Menu_SceneManager : MonoBehaviour
     {
         #region Singleton
 
-        public static Spawn_SceneManager instance;
+        public static Menu_SceneManager instance;
 
         private void Awake()
         {

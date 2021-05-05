@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DASH.Spawn
+namespace DASH._Menu
 {
 
     public class EnterDungeon : MonoBehaviour
@@ -15,20 +15,9 @@ namespace DASH.Spawn
             if (Door.activeSelf)
             {
                 
-                Spawn_SceneManager.instance.NewGame();
+                Menu_SceneManager.instance.NewGame();
             }
             
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

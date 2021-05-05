@@ -30,6 +30,7 @@ namespace DASH._Dungeon
         //public GameObject backpackRoot;
         //public int closedDoorsCount;
         public Door doorPrefab;
+        public WallEntrance wallEntrancePrefab;
         //public Domofon domofonPrefab;
 
         public Room[] RoomPrefabs;

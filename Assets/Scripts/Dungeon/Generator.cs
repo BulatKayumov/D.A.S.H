@@ -22,7 +22,7 @@ namespace DASH._Dungeon
         public int roomsCount = 10;
         [Range (10, 100)]
         public int maxMapSize = 20;
-        public int tileSize = 30;
+        public float tileSize = 10;
 
         public Room StartRoom;
         public Room ExitRoom;

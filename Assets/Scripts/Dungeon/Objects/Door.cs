@@ -23,8 +23,6 @@ namespace DASH._Dungeon
         public AudioClip openKey;
         public AudioClip openCode;
         private AudioSource audioSource;
-        [SerializeField]
-        private GameObject doorMesh;
 
         protected override void Start()
         {
@@ -35,7 +33,7 @@ namespace DASH._Dungeon
         protected override void Activate()
         {
             Debug.Log("Door Open");
-            doorMesh.SetActive(false);
+            OpenClose();
         }
         //protected override void Activate()
         //{
@@ -82,11 +80,11 @@ namespace DASH._Dungeon
         //    this.doorType = DoorType.Open;
         //}
 
-        //protected virtual void OpenClose()
-        //{
-        //    GetComponent<Animator>().SetTrigger("activate");
-        //    audioSource.PlayOneShot(openDoor);
-        //}
+        protected virtual void OpenClose()
+        {
+            GetComponent<Animator>().SetTrigger("activate");
+            //audioSource.PlayOneShot(openDoor);
+        }
 
         public void SetPosition(Vector2 cords, Orientation orientation)
         {
@@ -96,16 +94,16 @@ namespace DASH._Dungeon
             switch (orientation)
             {
                 case Orientation.North:
-                    gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
-                    break;
-                case Orientation.East:
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
-                case Orientation.South:
+                case Orientation.East:
                     gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
                     break;
-                case Orientation.West:
+                case Orientation.South:
                     gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    break;
+                case Orientation.West:
+                    gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
                     break;
             }
         }
