@@ -14,7 +14,6 @@ namespace DASH._Menu
         {
             if (Door.activeSelf)
             {
-                
                 Menu_SceneManager.instance.NewGame();
             }
             
