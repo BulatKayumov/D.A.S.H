@@ -9,7 +9,7 @@ namespace DASH._Dungeon
         public Camera mainCamera;
         void FixedUpdate()
         {
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit raycastHit;
