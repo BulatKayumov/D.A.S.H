@@ -92,6 +92,14 @@ namespace DASH._Player
             {
                 combat.Attack();
             }
+            if (Time.timeScale == 0)
+            {
+                canMove = false;
+            }
+            else
+            {
+                canMove = true;
+            }
         }
 
         private IEnumerator Roll()

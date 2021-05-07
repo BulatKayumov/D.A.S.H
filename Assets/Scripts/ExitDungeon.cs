@@ -29,6 +29,7 @@ namespace DASH._Menu
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 OFF.SetActive(false);
+                Time.timeScale = 0;
 
             }
             // if (Input.GetKeyDown(KeyCode.Escape) && Exit.activeSelf && !ExitQuestion.activeSelf)
@@ -54,6 +55,7 @@ namespace DASH._Menu
             ExitQuestion.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Time.timeScale = 1;
 
         }
         public void LeaveDungeonPlace()
@@ -67,6 +69,7 @@ namespace DASH._Menu
             Exit.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Time.timeScale = 1;
         }
         public void FirstExit()
         {
@@ -74,6 +77,7 @@ namespace DASH._Menu
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Exit.SetActive(false);
+            Time.timeScale = 0;
         }
         public void VolumeOff()
         {
