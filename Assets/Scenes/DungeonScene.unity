@@ -755,9 +755,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9afa84f3449ca4598e439eb76e3128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   roomsCount: 50
   maxMapSize: 35
   tileSize: 10.1
+=======
+  roomsCount: 10
+  maxMapSize: 20
+  tileSize: 10
+>>>>>>> Stashed changes
   StartRoom: {fileID: 1715056211}
   ExitRoom: {fileID: 3546902717810116575, guid: a6c90e0013db2ef4db026c99382ae7f4, type: 3}
 --- !u!114 &538403177
@@ -923,6 +929,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1376972386}
     m_Modifications:
+    - target: {fileID: 3222144272789206287, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222144272789206287, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997124891188516915, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -967,9 +981,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521228982316233671, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521228982316233671, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602068174476739365, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602068174476739365, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7963506311530239793, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
       propertyPath: m_Name
       value: StartRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999764774202381233, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999764774202381233, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 674032d60e5c2ed4a945e6c3283c2db4, type: 3}
@@ -2663,15 +2701,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5139770180410262639, guid: dce8948d19211db4d933e131c379135a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5139770180410262639, guid: dce8948d19211db4d933e131c379135a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5139770180410262639, guid: dce8948d19211db4d933e131c379135a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5139770180410262639, guid: dce8948d19211db4d933e131c379135a, type: 3}
       propertyPath: m_LocalPosition.x
