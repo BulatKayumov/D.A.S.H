@@ -28,7 +28,7 @@ namespace DASH._Menu
                 Exit.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                OFF.SetActive(false);
+                
                 Time.timeScale = 0;
 
             }
@@ -53,9 +53,7 @@ namespace DASH._Menu
         {
 
             ExitQuestion.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1;
+            Exit.SetActive(true);
 
         }
         public void LeaveDungeonPlace()

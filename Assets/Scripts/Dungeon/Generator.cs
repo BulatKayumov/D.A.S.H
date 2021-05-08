@@ -23,6 +23,7 @@ namespace DASH._Dungeon
         [Range (10, 100)]
         public int maxMapSize = 20;
         public float tileSize = 10;
+        public bool IsGenerated = false;
 
         public Room StartRoom;
         public Room ExitRoom;
@@ -68,6 +69,7 @@ namespace DASH._Dungeon
             AddInterior();
             //AddQuestItems();
             //AddItems();
+            IsGenerated = true;
         }
 
         private void PlaceRoom()

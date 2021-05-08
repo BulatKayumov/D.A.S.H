@@ -7409,6 +7409,7 @@ GameObject:
   - component: {fileID: 5135687182669894975}
   - component: {fileID: 3683077235531076548}
   - component: {fileID: 2609987674670789665}
+  - component: {fileID: 4349040671003384305}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7434,6 +7435,7 @@ Transform:
   - {fileID: 9069602160824781516}
   - {fileID: 2243743141619114797}
   - {fileID: 428699691614552871}
+  - {fileID: 3712964870060190513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7597,6 +7599,30 @@ MonoBehaviour:
     baseValue: 0
   speed:
     baseValue: 0
+--- !u!114 &4349040671003384305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134188775748710959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aab901bcc80113449adf0f74262cf2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingSpeed: 5
+  rollingSpeed: 10
+  runningSpeed: 7
+  jumpSpeed: 5
+  gravity: 10
+  lookSpeed: 2
+  lookXLimit: 45
+  isRolling: 0
+  offset: {x: 0, y: 0.1, z: -1.7}
+  LookPoint: {fileID: 3712964870060190513}
+  playerCamera: {fileID: 7599248867282504109}
+  canMove: 1
 --- !u!1 &5134193497137232427
 GameObject:
   m_ObjectHideFlags: 0
@@ -14931,6 +14957,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5137436018416184161}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8410767078813939602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3712964870060190513}
+  m_Layer: 0
+  m_Name: LookPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3712964870060190513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410767078813939602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5139770180410262639}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8429442273500473408
 GameObject:
