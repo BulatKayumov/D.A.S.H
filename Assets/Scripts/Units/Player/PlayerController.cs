@@ -22,6 +22,9 @@ namespace DASH._Player
         float movementDirectionY;
         float curSpeedX = 0f;
         float curSpeedY = 0f;
+        RaycastHit hit;
+        public Vector3 offset;
+        public Transform LookPoint;
 
         public Camera playerCamera;
         private PlayerAnimator animator;
@@ -86,7 +89,23 @@ namespace DASH._Player
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
                 transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+                if (Physics.Linecast(LookPoint.position, LookPoint.position + transform.rotation * offset, out hit))
+                {
+                    if (Vector3.Distance(LookPoint.position, hit.point) < offset.magnitude)
+                    {
+                        playerCamera.transform.position = hit.point;
+                    }
+                    else
+                    {
+                        playerCamera.transform.localPosition = offset;
+                    }
+                }
+                else
+                {
+                    playerCamera.transform.localPosition = offset;
+                }
             }
+
 
             if (Input.GetMouseButtonDown(0))
             {

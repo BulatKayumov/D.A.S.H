@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace DASH._Menu
 {
-
-
     public class ExitDungeon : MonoBehaviour
 
     {
@@ -28,16 +25,15 @@ namespace DASH._Menu
                 Exit.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                OFF.SetActive(false);
-                Time.timeScale = 0;
 
+                Time.timeScale = 0;
             }
             // if (Input.GetKeyDown(KeyCode.Escape) && Exit.activeSelf && !ExitQuestion.activeSelf)
             //{
             //    Exit.SetActive(false);
             //    Cursor.lockState = CursorLockMode.Locked;
             //    Cursor.visible = false;
-                
+
             //}
 
             //if (Input.GetKeyDown(KeyCode.Escape) && !Exit.activeSelf && ExitQuestion.activeSelf)
@@ -51,17 +47,12 @@ namespace DASH._Menu
 
         public void ReturnDungeonPlace()
         {
-
             ExitQuestion.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1;
-
+            Exit.SetActive(true);
         }
         public void LeaveDungeonPlace()
         {
             Menu_SceneManager.instance.NewMenu();
-
         }
 
         public void xActivate()

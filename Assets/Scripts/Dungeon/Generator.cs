@@ -18,11 +18,12 @@ namespace DASH._Dungeon
 
         #endregion
 
-        [Range (1, 100)]
+        [Range(1, 100)]
         public int roomsCount = 10;
-        [Range (10, 100)]
+        [Range(10, 100)]
         public int maxMapSize = 20;
         public float tileSize = 10;
+        public bool IsGenerated = false;
 
         public Room StartRoom;
         public Room ExitRoom;
@@ -39,7 +40,7 @@ namespace DASH._Dungeon
 
         public void Generate()
         {
-            foreach(Room room in manager.Rooms)
+            foreach (Room room in manager.Rooms)
             {
                 Destroy(room.gameObject);
             }
@@ -52,7 +53,7 @@ namespace DASH._Dungeon
             manager.SpawnedRooms[maxMapSize / 2 + 1, maxMapSize / 2] = StartRoom;
             StartRoom.Coordinates = new Vector2Int(maxMapSize / 2, maxMapSize / 2);
             int limit = 500;
-            while(!AllRequiredRoomsSpawned() && limit-- > 0)
+            while (!AllRequiredRoomsSpawned() && limit-- > 0)
             {
                 PlaceRoom();
             }
@@ -68,14 +69,15 @@ namespace DASH._Dungeon
             AddInterior();
             //AddQuestItems();
             //AddItems();
+            IsGenerated = true;
         }
 
         private void PlaceRoom()
         {
             HashSet<Vector2Int> vacantPlaces = new HashSet<Vector2Int>();
-            for(int x = 0; x < manager.SpawnedRooms.GetLength(0); x++)
+            for (int x = 0; x < manager.SpawnedRooms.GetLength(0); x++)
             {
-                for(int y = 0; y < manager.SpawnedRooms.GetLength(1); y++)
+                for (int y = 0; y < manager.SpawnedRooms.GetLength(1); y++)
                 {
                     if (manager.SpawnedRooms[x, y] == null) continue;
                     if (manager.SpawnedRooms[x, y].Coordinates != new Vector2Int(x, y)) continue;
@@ -83,9 +85,9 @@ namespace DASH._Dungeon
                     int maxX = manager.SpawnedRooms.GetLength(0) - 1;
                     int maxY = manager.SpawnedRooms.GetLength(1) - 1;
 
-                    foreach(DoorPlace doorPlace in manager.SpawnedRooms[x, y].doorPlaces)
+                    foreach (DoorPlace doorPlace in manager.SpawnedRooms[x, y].doorPlaces)
                     {
-                        if(x + doorPlace.cords.x + doorPlace.OrientationCords().x > 0 &&
+                        if (x + doorPlace.cords.x + doorPlace.OrientationCords().x > 0 &&
                             x + doorPlace.cords.x + doorPlace.OrientationCords().x < maxX &&
                             y + doorPlace.cords.y + doorPlace.OrientationCords().y > 0 &&
                             y + doorPlace.cords.y + doorPlace.OrientationCords().y < maxY &&
@@ -97,7 +99,7 @@ namespace DASH._Dungeon
                 }
             }
 
-            if(vacantPlaces.Count == 0)
+            if (vacantPlaces.Count == 0)
             {
                 Debug.LogWarning("Not enough places");
                 return;
@@ -111,7 +113,7 @@ namespace DASH._Dungeon
             {
                 vacantPlaces = new HashSet<Vector2Int>(backupVacantPlaces);
                 roomPrefab = GetRandomRoom(vacantPlaces.Count);
-                foreach(Vector2Int vacantPlace in vacantPlaces.ToList<Vector2Int>())
+                foreach (Vector2Int vacantPlace in vacantPlaces.ToList<Vector2Int>())
                 {
                     for (int x = Mathf.Max(0, vacantPlace.x - roomPrefab.room.radius); x < Mathf.Min(Generator.instance.maxMapSize - 1, vacantPlace.x + roomPrefab.room.radius); x++)
                     {
@@ -128,7 +130,7 @@ namespace DASH._Dungeon
 
             } while (vacantPlaces.Count == 0 && limit-- > 0);
 
-            if(vacantPlaces.Count == 0)
+            if (vacantPlaces.Count == 0)
             {
                 Debug.LogWarning("Not enough vacant places");
                 return;
@@ -142,9 +144,9 @@ namespace DASH._Dungeon
                 Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
                 newRoom.RotateRandomly();
                 List<Vector2Int> availablePositions = new List<Vector2Int>();
-                for(int x = position.x - newRoom.size.x + 1; x <= position.x; x++)
+                for (int x = position.x - newRoom.size.x + 1; x <= position.x; x++)
                 {
-                    for(int y = position.y - newRoom.size.y + 1; y <= position.y; y++)
+                    for (int y = position.y - newRoom.size.y + 1; y <= position.y; y++)
                     {
                         if (x > 0 &&
                             x + newRoom.size.x < manager.SpawnedRooms.GetLength(0) &&
@@ -152,11 +154,11 @@ namespace DASH._Dungeon
                             y + newRoom.size.y < manager.SpawnedRooms.GetLength(1))
                         {
                             bool flag = true;
-                            for(int x1 = x; x1 < x + newRoom.size.x; x1++)
+                            for (int x1 = x; x1 < x + newRoom.size.x; x1++)
                             {
                                 for (int y1 = y; y1 < y + newRoom.size.y; y1++)
                                 {
-                                    if (manager.SpawnedRooms[x1,y1] != null)
+                                    if (manager.SpawnedRooms[x1, y1] != null)
                                     {
                                         flag = false;
                                     }
@@ -170,7 +172,7 @@ namespace DASH._Dungeon
                     }
                 }
 
-                if(availablePositions.Count == 0)
+                if (availablePositions.Count == 0)
                 {
                     Debug.LogWarning("Destroyed, not enough available positions");
                     DestroyImmediate(newRoom.gameObject);
@@ -183,14 +185,14 @@ namespace DASH._Dungeon
                 if (ConnectToSomething(newRoom, position))
                 {
                     newRoom.transform.position = new Vector3(position.x + 0.5f * (newRoom.size.x - 1) - maxMapSize / 2, 0, position.y + 0.5f * (newRoom.size.y - 1) - maxMapSize / 2) * tileSize;
-                    for(int x = 0; x < newRoom.size.x; x++)
+                    for (int x = 0; x < newRoom.size.x; x++)
                     {
-                        for(int y = 0; y < newRoom.size.y; y++)
+                        for (int y = 0; y < newRoom.size.y; y++)
                         {
                             manager.SpawnedRooms[position.x + x, position.y + y] = newRoom;
                         }
                     }
-                    if(roomPrefab.room.roomType == RoomType.Required)
+                    if (roomPrefab.room.roomType == RoomType.Required)
                     {
                         roomPrefab.count--;
                         manager.RoomPrefabs[roomPrefab.index] = roomPrefab;
@@ -214,9 +216,9 @@ namespace DASH._Dungeon
 
             List<DoorPlace> availableDoorPlaces = new List<DoorPlace>();
 
-            foreach(DoorPlace doorPlace in room.doorPlaces)
+            foreach (DoorPlace doorPlace in room.doorPlaces)
             {
-                if(doorPlace.forDoor &&
+                if (doorPlace.forDoor &&
                     position.x + doorPlace.cords.x + doorPlace.OrientationCords().x > 0 &&
                     position.x + doorPlace.cords.x + doorPlace.OrientationCords().x < maxX &&
                     position.y + doorPlace.cords.y + doorPlace.OrientationCords().y > 0 &&
@@ -244,9 +246,9 @@ namespace DASH._Dungeon
         public RoomPrefab GetRandomRoom(int vacantPlacesCount)
         {
             List<float> chances = new List<float>();
-            for(int i = 0; i < manager.RoomPrefabs.Count; i++)
+            for (int i = 0; i < manager.RoomPrefabs.Count; i++)
             {
-                if(manager.RoomPrefabs[i].count > 0)
+                if (manager.RoomPrefabs[i].count > 0)
                 {
                     chances.Add(manager.RoomPrefabs[i].room.GetRating(vacantPlacesCount));
                 }
@@ -259,10 +261,10 @@ namespace DASH._Dungeon
             float value = Random.Range(0, chances.Sum());
             float sum = 0;
 
-            for(int i = 0; i < chances.Count; i++)
+            for (int i = 0; i < chances.Count; i++)
             {
                 sum += chances[i];
-                if(value < sum)
+                if (value < sum)
                 {
                     RoomPrefab roomPrefab = manager.RoomPrefabs[i];
                     //if(roomPrefab.room.roomType == RoomType.Required)
@@ -283,9 +285,9 @@ namespace DASH._Dungeon
 
         public bool AllRequiredRoomsSpawned()
         {
-            foreach(RoomPrefab roomPrefab in manager.RoomPrefabs)
+            foreach (RoomPrefab roomPrefab in manager.RoomPrefabs)
             {
-                if(roomPrefab.room.roomType == RoomType.Required && roomPrefab.count > 0)
+                if (roomPrefab.room.roomType == RoomType.Required && roomPrefab.count > 0)
                 {
                     return false;
                 }
@@ -295,7 +297,7 @@ namespace DASH._Dungeon
 
         private void AddDoors()
         {
-            foreach(Room room in manager.Rooms)
+            foreach (Room room in manager.Rooms)
             {
                 room.AddDoor();
             }
@@ -313,7 +315,7 @@ namespace DASH._Dungeon
             }
             foreach (Room room in manager.Rooms)
             {
-                foreach(DoorPlace doorPlace in room.doorPlaces)
+                foreach (DoorPlace doorPlace in room.doorPlaces)
                 {
                     if (doorPlace.isActive)
                     {
