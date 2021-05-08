@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraWall : MonoBehaviour
 {
-
+    float offset;
    
     void Start()
     {
