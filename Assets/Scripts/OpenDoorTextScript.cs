@@ -8,7 +8,6 @@ public class OpenDoorTextScript : MonoBehaviour
     private Animator _animator;
 
     public GameObject OpenText = null;
-    private bool NearDoor = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +22,6 @@ public class OpenDoorTextScript : MonoBehaviour
         if(other.tag == "Player")
         {
             OpenText.SetActive(true);
-            NearDoor = true;
 
         }
     }
@@ -34,7 +32,6 @@ public class OpenDoorTextScript : MonoBehaviour
         {
             _animator.SetBool("open", false);
             OpenText.SetActive(false);
-            NearDoor = false;
         }
     }
 
@@ -48,7 +45,7 @@ public class OpenDoorTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && NearDoor)
+        if(Input.GetKeyDown(KeyCode.E) && OpenText.activeSelf)
         {
             OpenText.SetActive(false);
             _animator.SetBool("open", true);
