@@ -8,24 +8,47 @@ namespace DASH._Units
     public class MobCombat : MonoBehaviour
     {
         private CharacterStats stats;
+        private float attackTimer;
+        private MobAnimator animator;
 
         private void Start()
         {
             stats = GetComponent<CharacterStats>();
-        }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.GetComponent<Player>())
-            {
-                Player player = other.GetComponent<Player>();
-                Attack(player);
-            } 
+            animator = GetComponent<MobAnimator>();
+            attackTimer = 0f;
         }
 
-        private void Attack(Player player)
+        private void Update()
         {
-            float damageDone = player.TakeDamage(stats.damage.GetStat());
-            Debug.Log("I dealt " + damageDone + " damage to player");
+            attackTimer -= Time.deltaTime;
+        }
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.GetComponent<Player>())
+        //    {
+        //        Player player = other.GetComponent<Player>();
+        //        Attack(player);
+        //    } 
+        //}
+
+        public void Attack(Player player)
+        {
+            if(stats.attackSpeed.GetStat() != 0)
+            {
+                float reload = 200 / stats.attackSpeed.GetStat();
+                if(attackTimer <= 0)
+                {
+                    float damageDone = player.TakeDamage(stats.damage.GetStat());
+                    attackTimer = reload;
+                    animator.PlayAttackAnimation();
+                    Debug.Log("I dealt " + damageDone + " damage to player, my reload is " + reload);
+                }
+            }
+            else
+            {
+                Debug.LogError("Division by zero");
+            }
         }
     }
 }

@@ -7,6 +7,17 @@ namespace DASH._Player
 {
     public class Player : MonoBehaviour
     {
+        #region Singleton
+
+        public static Player instance;
+
+        private void Awake()
+        {
+            instance = this;
+        }
+
+        #endregion
+
         public float currentHP;
         private CharacterStats stats;
         private void Start()

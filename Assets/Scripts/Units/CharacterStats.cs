@@ -8,6 +8,7 @@ namespace DASH._Units
     {
         public Stat maxHealth;
         public Stat damage;
+        public Stat attackSpeed;
         public Stat armor;
         public Stat regeneration;
         public Stat speed;

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1715454905537604242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children:
   - {fileID: 1838895464606124219}
   - {fileID: 3767754448893374696}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6219c32a5ae6dfa41b0d3d3e70894ae2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   radius: 30
   interactionTransform: {fileID: 2055142853112590376}
   cords: {x: 0, y: 0}
@@ -73,7 +73,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3423af5928594b0458ce2bab4420b82b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   OpenText: {fileID: 3022090132326552431}
 --- !u!1 &3022090132326552431
 GameObject:
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 5513008497505177802}
   - component: {fileID: 6641585842655941923}
   - component: {fileID: 9023779043991895958}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 3020898766438915375}
   - component: {fileID: 5469055314744959622}
   - component: {fileID: 911359690852212990}
+  - component: {fileID: 7122739774949271017}
   m_Layer: 0
   m_Name: Door 1
   m_TagString: Untagged
@@ -273,6 +274,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3040463, y: 1.9790831, z: 0.28313503}
   m_Center: {x: -0.6513824, y: 1.0230889, z: 0.106169984}
+--- !u!208 &7122739774949271017
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296775508768268162}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.652, y: 1.1, z: 0.142}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.651, y: 1.1340001, z: 0.106000006}
+  m_TimeToStationary: 0.5
 --- !u!1 &4483420648904792363
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +302,7 @@ GameObject:
   - component: {fileID: 7930784098725250229}
   - component: {fileID: 7889159464284858209}
   - component: {fileID: 7346348332078327941}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,8 +360,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -366,8 +383,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
