@@ -4,86 +4,98 @@ using System.Collections.Generic;
 
 namespace DASH._Dungeon
 {
-    public enum DoorType
-    {
-        Open, ClosedByKey, ClosedByCode
-    }
+    //public enum DoorType
+    //{
+    //    Open, ClosedByKey, ClosedByCode
+    //}
     public class Door : Interactable
     {
         [HideInInspector]
         public Vector2 cords;
         [HideInInspector]
         public Orientation orientation;
-        [HideInInspector]
-        public DoorType doorType;
-        //public QuestItem activateItem;
         public Room entryRoom;
+        [SerializeField]
+        private string openText;
+        [SerializeField]
+        private string closeText;
 
         public AudioClip openDoor;
-        public AudioClip openKey;
-        public AudioClip openCode;
         private AudioSource audioSource;
+
+        private bool opened = false;
 
         protected override void Start()
         {
             base.Start();
+            interactText = openText;
             //audioSource = GetComponent<AudioSource>();
         }
 
-        protected override void Activate()
+        protected override void Interact()
         {
-            Debug.Log("Door Open");
-            OpenClose();
+            base.Interact();
+            if (opened)
+            {
+                StartCoroutine(Close());
+            }
+            else
+            {
+                StartCoroutine(Open());
+            }
         }
-        //protected override void Activate()
-        //{
-        //    if (this.doorType == DoorType.Open)
-        //    {
-        //        OpenClose();
-        //    }
-        //    else
-        //    {
-        //        if (this.doorType == DoorType.ClosedByKey)
-        //        {
-        //            if (this.activateItem == GameManager.instance.ActiveQuestItem)
-        //            {
-        //                Inventory.instance.Remove(activateItem);
-        //                GameManager.instance.ActiveQuestItem = null;
-        //                StartCoroutine(OpenByKey());
-        //            }
-        //            else
-        //            {
-        //                Debug.Log("Closed");
-        //                UIManager.instance.ShowMessage("This door is closed");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("Closed");
-        //            UIManager.instance.ShowMessage("This door is closed");
-        //        }
-        //    }
-        //}
 
-        //protected IEnumerator OpenByKey()
-        //{
-        //    audioSource.PlayOneShot(openKey);
-        //    yield return new WaitForSecondsRealtime(2);
-        //    this.doorType = DoorType.Open;
-        //    OpenClose();
-        //}
 
-        //public IEnumerator OpenByCode()
-        //{
-        //    audioSource.PlayOneShot(openCode);
-        //    yield return new WaitForSecondsRealtime(2);
-        //    this.doorType = DoorType.Open;
-        //}
-
-        protected virtual void OpenClose()
+        protected virtual IEnumerator Open()
         {
-            GetComponent<Animator>().SetTrigger("activate");
+            GetComponent<Animator>().SetBool("open", true);
             //audioSource.PlayOneShot(openDoor);
+            ready = false;
+            opened = true;
+            ui.HideInteractText();
+            interactText = closeText;
+            yield return new WaitForSecondsRealtime(1f);
+            ready = true;
+            if (playerInTrigger)
+            {
+                ui.ShowInteractText(interactText);
+            }
+
+        }
+        protected virtual IEnumerator Close()
+        {
+            GetComponent<Animator>().SetBool("open", false);
+            //audioSource.PlayOneShot(openDoor);
+            ready = false;
+            opened = true;
+            ui.HideInteractText();
+            interactText = openText;
+            yield return new WaitForSecondsRealtime(1f);
+            ready = true;
+            if (playerInTrigger)
+            {
+                ui.ShowInteractText(interactText);
+            }
+        }
+
+        public void Lock()
+        {
+            if (opened)
+            {
+                GetComponent<Animator>().SetBool("open", false);
+                opened = false;
+            }
+            ready = false;
+            ui.HideInteractText();
+        }
+
+        public void Unlock()
+        {
+            ready = true;
+            if (playerInTrigger)
+            {
+                ui.ShowInteractText(interactText);
+            }
         }
 
         public void SetPosition(Vector2 cords, Orientation orientation)
@@ -128,11 +140,5 @@ namespace DASH._Dungeon
             }
             return orientationCords;
         }
-
-        //public void CreateDomofon()
-        //{
-        //    Domofon domofon = Instantiate(GameStateData.instance.domofonPrefab, GetComponentInParent<Room>().transform);
-        //    domofon.Create(this);
-        //}
     }
 }

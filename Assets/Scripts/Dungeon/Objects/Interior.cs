@@ -13,16 +13,16 @@ namespace DASH._Dungeon
 
         public AudioClip clip;
 
-        protected override void Activate()
-        {
-            if(TryGetComponent<Animator>(out Animator animator))
-            {
-                animator.SetTrigger("activate");
-                if(TryGetComponent<AudioSource>(out AudioSource audioSource))
-                {
-                    audioSource.PlayOneShot(clip);
-                }
-            }
-        }
+        //protected override void Activate()
+        //{
+        //    if(TryGetComponent<Animator>(out Animator animator))
+        //    {
+        //        animator.SetTrigger("activate");
+        //        if(TryGetComponent<AudioSource>(out AudioSource audioSource))
+        //        {
+        //            audioSource.PlayOneShot(clip);
+        //        }
+        //    }
+        //}
     }
 }

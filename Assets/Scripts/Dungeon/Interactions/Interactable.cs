@@ -1,48 +1,63 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DASH._Player;
+using DASH._UI;
 
 namespace DASH._Dungeon
 {
     public class Interactable : MonoBehaviour
     {
         protected GameObject player;
+        protected UIManager ui;
         [SerializeField]
-        float radius = 20f;
-        public Transform interactionTransform;
-        float distance;
+        protected string interactText;
+        protected bool playerInTrigger = false;
+        protected bool ready = true;
 
         protected virtual void Start()
         {
-            player = GameStateData.instance.Player;
-            if (interactionTransform == null)
+            ui = UIManager.instance;
+        }
+
+        void Update()
+        {
+            if (playerInTrigger && ready && Input.GetButtonDown("Interact"))
             {
-                interactionTransform = transform;
+                Interact();
             }
         }
 
-            public virtual void Interact()
-            {
-                distance = Vector3.Distance(player.transform.position, interactionTransform.position);
-                if (distance < radius)
-                {
-                    Debug.Log("Interact with " + gameObject.name);
-                    Activate();
-                }
-            }
-
-            protected virtual void Activate()
-            {
-
-            }
-
-        public void OnDrawGizmosSelected()
+        private void OnTriggerEnter(Collider other)
         {
-            if (interactionTransform == null)
+            if (other.GetComponent<Player>())
             {
-                interactionTransform = transform;
+                PlayerEntered();
             }
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(interactionTransform.position, radius);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                PlayerExited();
+            }
+        }
+
+        protected virtual void PlayerEntered()
+        {
+            ui.ShowInteractText(interactText);
+            playerInTrigger = true;
+        }
+
+        protected virtual void PlayerExited()
+        {
+            ui.HideInteractText();
+            playerInTrigger = false;
+        }
+
+        protected virtual void Interact()
+        {
+            Debug.Log("Interact with " + gameObject.name);
         }
     }
 }

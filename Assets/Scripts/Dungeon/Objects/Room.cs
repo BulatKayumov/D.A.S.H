@@ -149,7 +149,7 @@ namespace DASH._Dungeon
             //}
             //else
             //{
-                newDoor.doorType = DoorType.Open;
+            //    newDoor.doorType = DoorType.Open;
             //}
         }
 
