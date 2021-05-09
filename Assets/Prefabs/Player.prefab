@@ -7744,6 +7744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 0
+  playerCamera: {fileID: 7599248867282504109}
 --- !u!114 &2609987674670789665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8547,6 +8548,7 @@ GameObject:
   - component: {fileID: 5122442651423404407}
   - component: {fileID: 7496186424515351457}
   - component: {fileID: 2917788942363782886}
+  - component: {fileID: 3407486453896313945}
   m_Layer: 6
   m_Name: Sword_3
   m_TagString: Untagged
@@ -8625,7 +8627,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134537570951747615}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2770689, y: 0.10142806, z: 1.1984036}
@@ -8642,6 +8644,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9f6786198ea78419103b6d0a809376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3407486453896313945
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134537570951747615}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5134556135778528789
 GameObject:
   m_ObjectHideFlags: 0

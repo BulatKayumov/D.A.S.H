@@ -22,6 +22,7 @@ namespace DASH._Player
         public float currentHP;
         private CharacterStats stats;
         private UIManager ui;
+        public Camera playerCamera;
         private void Start()
         {
             stats = GetComponent<CharacterStats>();

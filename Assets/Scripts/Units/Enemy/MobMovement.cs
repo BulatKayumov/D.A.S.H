@@ -40,9 +40,7 @@ namespace DASH._Units
         
         public void SetPosition(Vector3 position)
         {
-            Debug.Log("agent move to " + position);
             agent.Warp(position);
-            Debug.Log("now agent is in " + position);
         }
     }
 }
