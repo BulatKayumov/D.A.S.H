@@ -174,7 +174,7 @@ namespace DASH._Dungeon
 
                 if (availablePositions.Count == 0)
                 {
-                    Debug.LogWarning("Destroyed, not enough available positions");
+                    Debug.LogWarning("Destroyed, not enough available positions. Room name - " + newRoom.roomName);
                     DestroyImmediate(newRoom.gameObject);
                     return;
                 }
