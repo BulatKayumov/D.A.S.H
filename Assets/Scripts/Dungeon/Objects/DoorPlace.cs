@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 namespace DASH._Dungeon
 {
@@ -64,6 +65,7 @@ namespace DASH._Dungeon
             isActive = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<Collider>().enabled = false;
+            gameObject.GetComponent<NavMeshObstacle>().enabled = false;
         }
     }
 }

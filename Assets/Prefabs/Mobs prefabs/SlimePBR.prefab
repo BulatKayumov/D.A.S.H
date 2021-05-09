@@ -133,6 +133,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3801614982365568206}
   - component: {fileID: 3801614982365568207}
+  - component: {fileID: 1557251114642663587}
+  - component: {fileID: 119640928947260164}
+  - component: {fileID: 3861770084778117050}
+  - component: {fileID: 3413659505888210106}
+  - component: {fileID: 3831863980020144969}
+  - component: {fileID: 7398379530092179008}
+  - component: {fileID: 5105753847347690096}
   m_Layer: 0
   m_Name: SlimePBR
   m_TagString: Untagged
@@ -175,6 +182,118 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1557251114642663587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c40ddf474f0054d99d4ea46dfb0821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 20
+  damage:
+    baseValue: 2
+  attackSpeed:
+    baseValue: 100
+  armor:
+    baseValue: 0
+  regeneration:
+    baseValue: 0.1
+  speed:
+    baseValue: 1
+--- !u!114 &119640928947260164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1286b47d8ef334d8897edcc6ecc74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3861770084778117050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a18aa644a637d54c9467c901c332673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobName: 
+  agressive: 0
+  attackDistance: 2
+  room: {fileID: 0}
+  currentHP: 0
+--- !u!195 &3413659505888210106
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 270
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3831863980020144969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c6492e49eeee141bad556c1912b1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7398379530092179008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830e86ff2e5c8c345b7db40852484f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5105753847347690096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801614982365568200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3801614982468386236
 GameObject:
   m_ObjectHideFlags: 0

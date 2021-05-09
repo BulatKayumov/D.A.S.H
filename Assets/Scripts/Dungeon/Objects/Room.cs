@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DASH._Units;
 
 namespace DASH._Dungeon
 {
@@ -16,10 +17,7 @@ namespace DASH._Dungeon
         public DoorPlace[] doorPlaces;
         public GameObject triggerCubesRoot;
         public Door door;
-        //public List<ItemPlace> itemPlaces;
-        public List<InteriorPlace> interiorPlaces;
-        //public List<HintPlace> hintPlaces;
-        public Vector2Int Coordinates /*{ get; set; }*/;
+        public Vector2Int Coordinates;
         public Vector2Int size;
         [Range(0, 100)]
         public int rating = 50;
@@ -67,7 +65,7 @@ namespace DASH._Dungeon
             Destroy(triggerCubesRoot);
         }
 
-        protected void RoomEntry()
+        protected virtual void RoomEntry()
         {
             Debug.Log("В комнату вошли");
         }
@@ -99,58 +97,6 @@ namespace DASH._Dungeon
             newDoor.SetPosition(this.Coordinates + selectedDoorPlace.cords, selectedDoorPlace.orientation);
             this.door = newDoor;
             newDoor.entryRoom = selectedDoorPlace.neighbour.GetComponentInParent<Room>();
-            //if(this.roomName == "PuzzleRoom" || this.roomName == "ExitRoom")
-            //{
-            //    if(GameManager.instance.closedByCodeRoomsCount == 0)
-            //    {
-            //        newDoor.doorType = DoorType.ClosedByKey;
-            //        GameManager.instance.closedByKeyRoomsCount--;
-            //        GameManager.instance.ClosedByKeyDoors.Add(newDoor);
-            //        int randomIndex = Random.Range(0, GameStateData.instance.keys.Count);
-            //        QuestItem questItem = Instantiate(GameStateData.instance.keys[randomIndex], GameStateData.instance.backpackRoot.transform);
-            //        GameStateData.instance.keys.RemoveAt(randomIndex);
-            //        questItem.roomIndex = this.index;
-            //        questItem.transform.position = GameStateData.instance.backpackRoot.transform.position;
-            //        GameManager.instance.RequiredQuestItems.Add(questItem);
-            //        newDoor.activateItem = questItem;
-            //    }
-            //    else
-            //    {
-            //        if(GameManager.instance.closedByKeyRoomsCount == 0)
-            //        {
-            //            newDoor.doorType = DoorType.ClosedByCode;
-            //            GameManager.instance.closedByCodeRoomsCount--;
-            //            newDoor.CreateDomofon();
-            //        }
-            //        else
-            //        {
-            //            int random = Random.Range(0, 1);
-            //            if(random == 0)
-            //            {
-            //                newDoor.doorType = DoorType.ClosedByKey;
-            //                GameManager.instance.closedByKeyRoomsCount--;
-            //                GameManager.instance.ClosedByKeyDoors.Add(newDoor);
-            //                int randomIndex = Random.Range(0, GameStateData.instance.keys.Count);
-            //                QuestItem questItem = Instantiate(GameStateData.instance.keys[randomIndex], GameStateData.instance.backpackRoot.transform);
-            //                GameStateData.instance.keys.RemoveAt(randomIndex);
-            //                questItem.roomIndex = this.index;
-            //                questItem.transform.position = GameStateData.instance.backpackRoot.transform.position;
-            //                GameManager.instance.RequiredQuestItems.Add(questItem);
-            //                newDoor.activateItem = questItem;
-            //            }
-            //            else
-            //            {
-            //                newDoor.doorType = DoorType.ClosedByCode;
-            //                GameManager.instance.closedByCodeRoomsCount--;
-            //                newDoor.CreateDomofon();
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    newDoor.doorType = DoorType.Open;
-            //}
         }
 
         public int GetRating(int vacantPlacesCount)
@@ -160,6 +106,21 @@ namespace DASH._Dungeon
                 return 0;
             }
             return rating;
+        }
+
+        public virtual void SpawnMob(MobController prefab, bool agressive)
+        {
+            Vector2 spawnArea = new Vector2(size.x * (Generator.instance.tileSize - 2)  / 2, size.y * (Generator.instance.tileSize - 2) / 2);
+            Vector3 position = new Vector3(Random.Range(transform.position.x - spawnArea.x, transform.position.x + spawnArea.x),
+                                            0,
+                                            Random.Range(transform.position.z - spawnArea.y, transform.position.z + spawnArea.y));
+            Quaternion rotation = Quaternion.Euler(0, Random.Range(0, 360) , 0);
+            MobController newMob = Instantiate(prefab, GameStateData.instance.mobsRoot.transform);
+            newMob.transform.position = position;
+            newMob.SetPosition(position);
+            newMob.transform.rotation = rotation;
+            newMob.agressive = agressive;
+            newMob.room = this;
         }
     }
 }

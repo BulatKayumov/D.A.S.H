@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 6664038248461304792}
   - component: {fileID: 2301237242229957617}
   - component: {fileID: 4651682071141941472}
+  - component: {fileID: 2830077224553825284}
   m_Layer: 8
   m_Name: SkeletonOutlaw_NoArmor - LOD1
   m_TagString: Untagged
@@ -258,12 +259,12 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
-  m_Acceleration: 0.2
+  m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_AngularSpeed: 270
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -281,9 +282,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a18aa644a637d54c9467c901c332673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobName: 
   agressive: 0
   attackDistance: 1
   room: {fileID: 0}
+  currentHP: 0
 --- !u!114 &8047296215957918742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,17 +336,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 20
+    baseValue: 15
   damage:
-    baseValue: 5
+    baseValue: 3
   attackSpeed:
-    baseValue: 0
+    baseValue: 150
   armor:
-    baseValue: 0
+    baseValue: 1
   regeneration:
-    baseValue: 0.1
+    baseValue: 0.3
   speed:
-    baseValue: 20
+    baseValue: 2
+--- !u!65 &2830077224553825284
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144028080539786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1147489988858412
 GameObject:
   m_ObjectHideFlags: 0

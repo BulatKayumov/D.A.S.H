@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using DASH._Units;
 
 namespace DASH._Player
 {
@@ -8,9 +9,9 @@ namespace DASH._Player
     public class PlayerController : MonoBehaviour
     {
         PlayerCombat combat;
-        public float walkingSpeed = 5f;
-        public float rollingSpeed = 10f;
-        public float runningSpeed = 7f;
+        public float walkingSpeed = 3f;
+        public float rollingSpeed = 6f;
+        public float runningSpeed = 5f;
         public float jumpSpeed = 5.0f;
         public float gravity = 10f;
         public float lookSpeed = 2.0f;
@@ -29,6 +30,7 @@ namespace DASH._Player
         public Camera playerCamera;
         private PlayerAnimator animator;
         CharacterController characterController;
+        CharacterStats stats;
 
         [HideInInspector]
         public bool canMove = true;
@@ -36,6 +38,7 @@ namespace DASH._Player
         void Start()
         {
             characterController = GetComponent<CharacterController>();
+            stats = GetComponent<CharacterStats>();
             // Lock cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -45,7 +48,10 @@ namespace DASH._Player
 
         void Update()
         {
-            if (characterController.isGrounded && canMove && !isRolling)
+            walkingSpeed = stats.speed.GetStat();
+            runningSpeed = walkingSpeed * 2;
+            rollingSpeed = walkingSpeed * 1.5f;
+            if (characterController.isGrounded && canMove)
             {
                 Vector3 forward = transform.TransformDirection(Vector3.forward);
                 Vector3 right = transform.TransformDirection(Vector3.right);
@@ -57,7 +63,7 @@ namespace DASH._Player
                 movementDirectionY = moveDirection.y;
                 moveDirection = forward * curSpeedX + right * curSpeedY;
 
-                if (Input.GetButton("Jump"))
+                if (Input.GetButton("Jump") && !isRolling)
                 {
                     animator.Jump();
                     moveDirection.y = jumpSpeed;

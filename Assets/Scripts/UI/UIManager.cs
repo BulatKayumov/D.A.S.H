@@ -29,6 +29,12 @@ namespace DASH._UI
         private CharacterStats playerStats;
         [SerializeField]
         private Text interactText;
+        [SerializeField]
+        private Text HealText;
+        [SerializeField]
+        private Text DamageText;
+        private float healTextTimer = 0f;
+        private float damageTextTimer = 0f;
 
         private void Start()
         {
@@ -53,6 +59,11 @@ namespace DASH._UI
         {
             SetMaxHealth(playerStats.maxHealth.GetStat());
             SetHealth(player.currentHP);
+            healTextTimer -= Time.deltaTime;
+            damageTextTimer -= Time.deltaTime;
+
+            HealText.color = new Color(HealText.color.r, HealText.color.g, HealText.color.b, Mathf.Clamp(healTextTimer, 0, 1));
+            DamageText.color = new Color(DamageText.color.r, DamageText.color.g, DamageText.color.b, Mathf.Clamp(damageTextTimer, 0, 1));
         }
 
         public void SetMaxHealth(float health)
@@ -67,5 +78,18 @@ namespace DASH._UI
             healthBarFill.color = healtBarGradient.Evaluate(healthBarSlider.normalizedValue);
         }
 
+        public void SetHealText(float value)
+        {
+            HealText.text = "+" + value;
+            HealText.color = new Color(HealText.color.r, HealText.color.g, HealText.color.b, 1);
+            healTextTimer = 3f;
+        }
+
+        public void SetDamageText(float value)
+        {
+            DamageText.text = "-" + value;
+            DamageText.color = new Color(DamageText.color.r, DamageText.color.g, DamageText.color.b, 1);
+            damageTextTimer = 3f;
+        }
     }
 }

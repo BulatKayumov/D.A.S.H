@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DASH._Units;
+using DASH._Player;
 
 namespace DASH._Dungeon
 {
@@ -11,6 +13,7 @@ namespace DASH._Dungeon
         public int index;
     }
 
+    [DefaultExecutionOrder(-300)]
     public class GameStateData : MonoBehaviour
     {
         #region Singleton
@@ -25,18 +28,15 @@ namespace DASH._Dungeon
         #endregion
 
         public GameObject roomsRoot;
-        //public GameObject itemsRoot;
         public GameObject Player;
-        //public GameObject backpackRoot;
-        //public int closedDoorsCount;
         public Door doorPrefab;
         public WallEntrance wallEntrancePrefab;
-        //public Domofon domofonPrefab;
 
         public Room[] RoomPrefabs;
-        //public Item[] Items;
-        //public List<Hint> Hints;
-        public Interior[] interiors;
-        //public List<QuestItem> keys;
+        //public Interior[] interiors;
+        public GameObject mobsRoot;
+        public MobController[] mobPrefabs;
+        public Player PlayerPrefab;
+        public Vector3 playerSpawnCords = new Vector3(0, 0, 0);
     }
 }

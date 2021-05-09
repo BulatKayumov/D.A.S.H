@@ -9,10 +9,15 @@ namespace DASH._Units
     {
         NavMeshAgent agent;
         CharacterStats stats;
-        void Start()
+
+        private void Awake()
         {
             stats = GetComponent<CharacterStats>();
             agent = GetComponent<NavMeshAgent>();
+        }
+
+        void Start()
+        {
             agent.stoppingDistance = GetComponent<MobController>().attackDistance;
         }
 
@@ -24,15 +29,20 @@ namespace DASH._Units
         public void Move(Vector3 targetPosition)
         {
             agent.speed = stats.speed.GetStat();
-            Debug.Log("I'm moving to " + targetPosition);
             agent.SetDestination(targetPosition);
         }
 
         public void Walk(Vector3 targetPosition)
         {
             agent.speed = stats.speed.GetStat() * 0.7f;
-            Debug.Log("I'm walking to " + targetPosition);
             agent.SetDestination(targetPosition);
+        }
+        
+        public void SetPosition(Vector3 position)
+        {
+            Debug.Log("agent move to " + position);
+            agent.Warp(position);
+            Debug.Log("now agent is in " + position);
         }
     }
 }

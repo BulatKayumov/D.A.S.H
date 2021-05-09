@@ -23,15 +23,6 @@ namespace DASH._Units
             attackTimer -= Time.deltaTime;
         }
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.GetComponent<Player>())
-        //    {
-        //        Player player = other.GetComponent<Player>();
-        //        Attack(player);
-        //    } 
-        //}
-
         public void Attack(Player player)
         {
             if(stats.attackSpeed.GetStat() != 0)

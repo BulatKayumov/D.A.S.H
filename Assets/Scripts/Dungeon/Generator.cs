@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DASH._Dungeon
 {
+    [DefaultExecutionOrder(-250)]
     public class Generator : MonoBehaviour
     {
         #region Singleton
@@ -66,7 +67,7 @@ namespace DASH._Dungeon
             }
 
             AddDoors();
-            AddInterior();
+            //AddInterior();
             //AddQuestItems();
             //AddItems();
             IsGenerated = true;
@@ -303,44 +304,44 @@ namespace DASH._Dungeon
             }
         }
 
-        private void AddInterior()
-        {
-            List<float> chances = new List<float>();
-            List<Interior> furniture = new List<Interior>();
-            for (int i = 0; i < data.interiors.Count(); i++)
-            {
-                chances.Add(data.interiors[i].rating);
-                chances.Add(data.interiors[i].rating);
-                furniture.Add(data.interiors[i]);
-            }
-            foreach (Room room in manager.Rooms)
-            {
-                foreach (DoorPlace doorPlace in room.doorPlaces)
-                {
-                    if (doorPlace.isActive)
-                    {
-                        float value = Random.Range(0, chances.Sum());
-                        InteriorPlace interiorPlace = doorPlace.gameObject.AddComponent<InteriorPlace>();
-                        interiorPlace.doorPlace = doorPlace;
-                        room.interiorPlaces.Add(interiorPlace);
-                    }
-                }
-                foreach (InteriorPlace interiorPlace in room.interiorPlaces)
-                {
-                    float value = Random.Range(0, chances.Sum());
-                    float sum = 0;
-                    for (int i = 0; i < chances.Count(); i++)
-                    {
-                        sum += chances[i];
-                        if (value < sum)
-                        {
-                            interiorPlace.CreateInterior(furniture[i]);
-                            i = chances.Count();
-                        }
-                    }
-                }
-            }
-        }
+        //private void AddInterior()
+        //{
+        //    List<float> chances = new List<float>();
+        //    List<Interior> furniture = new List<Interior>();
+        //    for (int i = 0; i < data.interiors.Count(); i++)
+        //    {
+        //        chances.Add(data.interiors[i].rating);
+        //        chances.Add(data.interiors[i].rating);
+        //        furniture.Add(data.interiors[i]);
+        //    }
+        //    foreach (Room room in manager.Rooms)
+        //    {
+        //        foreach (DoorPlace doorPlace in room.doorPlaces)
+        //        {
+        //            if (doorPlace.isActive)
+        //            {
+        //                float value = Random.Range(0, chances.Sum());
+        //                InteriorPlace interiorPlace = doorPlace.gameObject.AddComponent<InteriorPlace>();
+        //                interiorPlace.doorPlace = doorPlace;
+        //                room.interiorPlaces.Add(interiorPlace);
+        //            }
+        //        }
+        //        foreach (InteriorPlace interiorPlace in room.interiorPlaces)
+        //        {
+        //            float value = Random.Range(0, chances.Sum());
+        //            float sum = 0;
+        //            for (int i = 0; i < chances.Count(); i++)
+        //            {
+        //                sum += chances[i];
+        //                if (value < sum)
+        //                {
+        //                    interiorPlace.CreateInterior(furniture[i]);
+        //                    i = chances.Count();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         //private void AddQuestItems()
         //{

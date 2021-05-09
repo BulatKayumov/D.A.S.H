@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DASH._Dungeon
 {
-    public class RewardRoom : Room
+    public class BossRoom : Room
     {
     }
 }
