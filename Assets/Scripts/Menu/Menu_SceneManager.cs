@@ -28,5 +28,10 @@ namespace DASH._Menu
             Debug.Log("load 0");
             SceneManager.LoadScene(0);
         }
+        public void NewShop()
+        {
+            Debug.Log("load 3");
+            SceneManager.LoadScene(3);
+        }
     }
 }
