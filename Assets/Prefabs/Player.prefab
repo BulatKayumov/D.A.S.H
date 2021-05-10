@@ -7597,7 +7597,9 @@ GameObject:
   - component: {fileID: 5135687182669894974}
   - component: {fileID: 5135687182669894975}
   - component: {fileID: 3683077235531076548}
+  - component: {fileID: 4080096001250525752}
   - component: {fileID: 2609987674670789665}
+  - component: {fileID: 2380597335889684837}
   - component: {fileID: 4349040671003384305}
   m_Layer: 6
   m_Name: Player
@@ -7743,8 +7745,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52f32d2df68e064aabbb48f66c14701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 0
   playerCamera: {fileID: 7599248867282504109}
+--- !u!114 &4080096001250525752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134188775748710959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f580ac2a68e0cb345bfdcf7a2ed26a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 0
 --- !u!114 &2609987674670789665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7769,6 +7783,20 @@ MonoBehaviour:
     baseValue: 1
   speed:
     baseValue: 3
+--- !u!114 &2380597335889684837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134188775748710959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ccb2d74dd5aca458df6756ee860445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXP: 0
+  currentLevel: 1
 --- !u!114 &4349040671003384305
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,11 +21,6 @@ namespace DASH._Units
             agent.stoppingDistance = GetComponent<MobController>().attackDistance;
         }
 
-        void Update()
-        {
-
-        }
-
         public void Move(Vector3 targetPosition)
         {
             agent.speed = stats.speed.GetStat();
@@ -41,6 +36,11 @@ namespace DASH._Units
         public void SetPosition(Vector3 position)
         {
             agent.Warp(position);
+        }
+
+        public void StopAgent()
+        {
+            agent.enabled = false;
         }
     }
 }

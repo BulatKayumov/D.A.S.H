@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
+    baseValue: 20
   damage:
     baseValue: 5
   attackSpeed:
@@ -1230,6 +1230,8 @@ MonoBehaviour:
   attackDistance: 3
   room: {fileID: 0}
   currentHP: 0
+  rewardGold: 10
+  rewardXP: 7
 --- !u!114 &4042427036827734097
 MonoBehaviour:
   m_ObjectHideFlags: 0

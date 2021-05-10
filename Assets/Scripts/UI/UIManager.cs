@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DASH._Player;
 using DASH._Units;
+using DASH._Dungeon;
 
 namespace DASH._UI
 {
@@ -23,24 +24,38 @@ namespace DASH._UI
         [SerializeField]
         private GameObject healthBar;
         private Slider healthBarSlider;
-        public Gradient healtBarGradient;
+        public Gradient healthBarGradient;
         public Image healthBarFill;
+        [SerializeField]
+        private GameObject xpBar;
+        private Slider xpBarSlider;
+        public Gradient xpBarGradient;
+        public Image xpBarFill;
+        private GameStateData data;
         private Player player;
         private CharacterStats playerStats;
+        private PlayerHealth playerHealth;
+        private PlayerXP playerXP;
         [SerializeField]
         private Text interactText;
         [SerializeField]
         private Text HealText;
         [SerializeField]
         private Text DamageText;
+        [SerializeField]
+        private Text LevelText;
         private float healTextTimer = 0f;
         private float damageTextTimer = 0f;
 
         private void Start()
         {
+            data = GameStateData.instance;
             healthBarSlider = healthBar.GetComponent<Slider>();
+            xpBarSlider = xpBar.GetComponent<Slider>();
             player = Player.instance;
-            playerStats = player.gameObject.GetComponent<CharacterStats>();
+            playerStats = player.GetComponent<CharacterStats>();
+            playerHealth = player.GetComponent<PlayerHealth>();
+            playerXP = player.GetComponent<PlayerXP>();
             interactText.gameObject.SetActive(false);
         }
 
@@ -58,7 +73,9 @@ namespace DASH._UI
         private void Update()
         {
             SetMaxHealth(playerStats.maxHealth.GetStat());
-            SetHealth(player.currentHP);
+            SetHealth(playerHealth.currentHP);
+            SetMaxXP(data.levelUpXPValues[playerXP.currentLevel - 1]);
+            SetXp(playerXP.currentXP);
             healTextTimer -= Time.deltaTime;
             damageTextTimer -= Time.deltaTime;
 
@@ -75,7 +92,7 @@ namespace DASH._UI
         public void SetHealth(float health)
         {
             healthBarSlider.value = health;
-            healthBarFill.color = healtBarGradient.Evaluate(healthBarSlider.normalizedValue);
+            healthBarFill.color = healthBarGradient.Evaluate(healthBarSlider.normalizedValue);
         }
 
         public void SetHealText(float value)
@@ -90,6 +107,23 @@ namespace DASH._UI
             DamageText.text = "-" + value;
             DamageText.color = new Color(DamageText.color.r, DamageText.color.g, DamageText.color.b, 1);
             damageTextTimer = 3f;
+        }
+
+        public void SetMaxXP(float xp)
+        {
+            xpBarSlider.maxValue = xp;
+            //fill.color = gradient.Evaluate(1f);
+        }
+
+        public void SetXp(float xp)
+        {
+            xpBarSlider.value = xp;
+            xpBarFill.color = xpBarGradient.Evaluate(healthBarSlider.normalizedValue);
+        }
+
+        public void SetLevelText(int currentLevel)
+        {
+            LevelText.text = "Lvl " + currentLevel;
         }
     }
 }

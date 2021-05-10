@@ -287,6 +287,8 @@ MonoBehaviour:
   attackDistance: 1
   room: {fileID: 0}
   currentHP: 0
+  rewardGold: 10
+  rewardXP: 5
 --- !u!114 &8047296215957918742
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,5 +38,6 @@ namespace DASH._Dungeon
         public MobController[] mobPrefabs;
         public Player PlayerPrefab;
         public Vector3 playerSpawnCords = new Vector3(0, 0, 0);
+        public float[] levelUpXPValues;
     }
 }
