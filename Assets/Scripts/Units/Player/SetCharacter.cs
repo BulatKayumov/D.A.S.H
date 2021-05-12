@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CartoonHeroes
+namespace DASH._Player
 {
     public class SetCharacter : MonoBehaviour
     {

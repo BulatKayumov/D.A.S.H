@@ -1261,7 +1261,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   healthBarFill: {fileID: 1812564904}
-  xpBar: {fileID: 0}
+  xpBar: {fileID: 2031884637}
   xpBarGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1291,10 +1291,11 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  xpBarFill: {fileID: 0}
+  xpBarFill: {fileID: 745748754}
   interactText: {fileID: 217461141}
   HealText: {fileID: 745620290}
   DamageText: {fileID: 19620770}
+  LevelText: {fileID: 1681733588}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

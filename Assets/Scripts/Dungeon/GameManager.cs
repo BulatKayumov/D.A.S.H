@@ -45,7 +45,9 @@ namespace DASH._Dungeon
         {
             Player player = Instantiate(data.PlayerPrefab, data.playerSpawnCords, Quaternion.identity);
             CharacterStats stats = player.GetComponent<CharacterStats>();
-
+            PlayerEquipment equipment = player.GetComponent<PlayerEquipment>();
+            equipment.TorsoEquip(0);
+            equipment.LegsEquip(0);
         }
     }
 }

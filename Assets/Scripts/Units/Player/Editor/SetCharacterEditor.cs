@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace CartoonHeroes
+namespace DASH._Player
 {
-   
     [CustomEditor(typeof(SetCharacter))]
     [CanEditMultipleObjects]
     public class SetCharacterEditor : Editor
@@ -126,9 +125,7 @@ namespace CartoonHeroes
                     GUILayout.Space(defaultSpace);
                 }
             }
-
             serializedObject.ApplyModifiedProperties();
-
         }
     }
 }
