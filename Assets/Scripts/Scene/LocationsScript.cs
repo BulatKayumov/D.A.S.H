@@ -10,6 +10,9 @@ namespace DASH._Menu
         public GameObject[] cameras;
         private int currentIndex = 0;
         public GameObject cameraCurrent;
+
+        [SerializeField]
+        private Shop shop;
         public void LocationsChangeVisible()
         {
             if (Locations.activeSelf)
@@ -32,6 +35,16 @@ namespace DASH._Menu
             cameras[currentIndex].SetActive(false);
             currentIndex = index;
             cameras[currentIndex].SetActive(true);
+            if (currentIndex == 1)
+            {
+                shop.OpenShop();
+            }
+            else
+            {
+                shop.CloseShop();
+            }
         }
+
+
     }
 }

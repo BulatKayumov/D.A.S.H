@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public Camera PlayerCamera;
-    public Camera ShopCamera;
     private bool InShop = false;
     public GameObject[] weapons;
-    public GameObject player;
     private int number = 0;
     private bool CanvasIsWork = false;
 
     [SerializeField]
     private ShopCanvas shopCanvas;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,25 +20,18 @@ public class Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && InShop)
+        if (InShop)
         {
-            PlayerCamera.enabled = false;
-            ShopCamera.enabled = true;
+            shopCanvas.Canvas.SetActive(true);
             weapons[number].SetActive(true);
-            player.SetActive(false);
             shopCanvas.weaponCharacters[number].SetActive(true);
             shopCanvas.Next.SetActive(true);
             shopCanvas.Previous.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             CanvasIsWork = true;
-            shopCanvas.ShopLeaveTxt.SetActive(true);
+           
 
-        }
-
-        if (CanvasIsWork)
-        {
-            shopCanvas.ShopEnterTxt.SetActive(false);
         }
 
         if (number < 3 && CanvasIsWork)
@@ -62,39 +53,27 @@ public class Shop : MonoBehaviour
             shopCanvas.Previous.SetActive(false);
         }
         
-        if(!shopCanvas.ShopLeaveTxt.activeSelf)
+        if(!InShop)
         {
-            PlayerCamera.enabled = true;
-            ShopCamera.enabled = false;
+            
             weapons[number].SetActive(false);
-            player.SetActive(true);
             shopCanvas.weaponCharacters[number].SetActive(false);
             shopCanvas.Next.SetActive(false);
             shopCanvas.Previous.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             CanvasIsWork = false;
+            shopCanvas.Canvas.SetActive(false);
         }
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "Player")
-        {
-            shopCanvas.ShopEnter();
-            InShop = true;
 
-        }
+    public void OpenShop()
+    {
+        InShop = true;
     }
-    private void OnTriggerExit(Collider other)
+    public void CloseShop()
     {
-        if (other.name == "Player")
-        {
-            shopCanvas.ShopExit();
-            InShop = false;
-
-        }
+        InShop = false;
     }
     public void NextWeapon()
     {
@@ -113,4 +92,5 @@ public class Shop : MonoBehaviour
         shopCanvas.weaponCharacters[number - 1].SetActive(true);
         number = number - 1;
     }
+
 }

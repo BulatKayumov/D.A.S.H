@@ -5,12 +5,10 @@ using UnityEngine;
 public class ShopCanvas : MonoBehaviour
 {
 
-    public GameObject ShopEnterTxt;
     public GameObject Next;
     public GameObject Previous;
     public GameObject[] weaponCharacters;
     public GameObject Canvas;
-    public GameObject ShopLeaveTxt;
 
     // Start is called before the first frame update
     void Start()
@@ -24,18 +22,6 @@ public class ShopCanvas : MonoBehaviour
 
     }
 
-    public void ShopEnter()
-    {
-        ShopEnterTxt.SetActive(true);
-    }
-    public void ShopExit()
-    {
-        ShopEnterTxt.SetActive(false);
 
-    }
-    public void ShopExitButton()
-    {
-        ShopLeaveTxt.SetActive(false);
-    }    
 }
 
