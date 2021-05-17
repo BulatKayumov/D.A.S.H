@@ -12,5 +12,7 @@ namespace DASH._Units
         public Stat armor;
         public Stat regeneration;
         public Stat speed;
+        public Stat criticalStrikeChance;
+        public Stat criticalStrikeModifier;
     }
 }

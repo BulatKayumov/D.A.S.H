@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using DASH._Player;
 using DASH._Units;
+using DASH._Menu;
+using DASH._UI;
 
 namespace DASH._Dungeon
 {
@@ -25,8 +27,10 @@ namespace DASH._Dungeon
         public List<Room> Rooms;
         public List<Door> ClosedByKeyDoors;
         public Room[,] SpawnedRooms;
+        public Boss boss;
         GameStateData data;
         bool generated = false;
+        public int coins;
 
         void Start()
         {
@@ -39,6 +43,7 @@ namespace DASH._Dungeon
             Rooms = new List<Room>();
             Generator.instance.Generate();
             SpawnPlayer();
+            coins = 0;
         }
 
         private void SpawnPlayer()
@@ -48,6 +53,25 @@ namespace DASH._Dungeon
             PlayerEquipment equipment = player.GetComponent<PlayerEquipment>();
             equipment.TorsoEquip(0);
             equipment.LegsEquip(0);
+        }
+
+        public void EarnCoins(int value)
+        {
+            coins += value;
+            UIManager.instance.UpdateCoinsUI();
+        }
+
+        public void LevelCompleted()
+        {
+            LeaveDungeon();
+        }
+
+        public void LeaveDungeon()
+        {
+            int currentCoins = PlayerPrefs.GetInt("Coins");
+            PlayerPrefs.SetInt("Coins", currentCoins + coins);
+            PlayerPrefs.Save();
+            Dungeon_SceneManager.instance.ReturnToMenu();
         }
     }
 }

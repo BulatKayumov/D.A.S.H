@@ -27,7 +27,7 @@ namespace DASH._Dungeon
         public bool IsGenerated = false;
 
         public Room StartRoom;
-        public Room ExitRoom;
+        public BossRoom ExitRoom;
 
         GameManager manager;
         GameStateData data;
@@ -36,6 +36,7 @@ namespace DASH._Dungeon
         {
             manager = GameManager.instance;
             data = GameStateData.instance;
+            ExitRoom = data.BossRoomPrefab;
             //Generate();
         }
 
@@ -300,7 +301,7 @@ namespace DASH._Dungeon
         {
             foreach (Room room in manager.Rooms)
             {
-                room.AddDoor();
+                room.AddEntryDoor();
             }
         }
 

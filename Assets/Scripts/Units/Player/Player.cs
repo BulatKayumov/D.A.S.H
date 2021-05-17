@@ -20,18 +20,18 @@ namespace DASH._Player
         #endregion
 
         private CharacterStats stats;
-        private UIManager ui;
+        private PlayerHealth health;
         public Camera playerCamera;
         private void Start()
         {
             stats = GetComponent<CharacterStats>();
-            ui = UIManager.instance;
+            health = GetComponent<PlayerHealth>();
         }
 
         public float TakeDamage(float value)
         {
             float damage = value - stats.armor.GetStat();
-            ui.SetDamageText(damage);
+            health.TakeDamage(damage);
             return damage;
         }
     }

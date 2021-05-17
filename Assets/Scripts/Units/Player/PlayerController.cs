@@ -131,7 +131,7 @@ namespace DASH._Player
         {
             isRolling = true;
             animator.Roll();
-            yield return new WaitForSecondsRealtime(rollTime);
+            yield return new WaitForSeconds(rollTime);
             isRolling = false;
         }
     }

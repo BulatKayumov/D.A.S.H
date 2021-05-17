@@ -16,7 +16,9 @@ namespace DASH._Dungeon
         public List<int> way;
         public DoorPlace[] doorPlaces;
         public GameObject triggerCubesRoot;
-        public Door door;
+        public Door entryDoor;
+        [SerializeField]
+        protected List<Door> doors = new List<Door>();
         public Vector2Int Coordinates;
         public Vector2Int size;
         [Range(0, 100)]
@@ -30,6 +32,9 @@ namespace DASH._Dungeon
 
         [HideInInspector]
         public DoorPlace selectedDoorPlace;
+
+        [SerializeField]
+        protected List<MobController> mobs = new List<MobController>();
 
         public bool HasDoorTo(Vector2Int cords, DoorPlace otherDoorPlace)
         {
@@ -89,14 +94,21 @@ namespace DASH._Dungeon
             }
         }
 
-        public void AddDoor()
+        public void AddEntryDoor()
         {
             WallEntrance doorEntrance = Instantiate(GameStateData.instance.wallEntrancePrefab, gameObject.transform);
             doorEntrance.SetPosition(this.Coordinates + selectedDoorPlace.cords, selectedDoorPlace.orientation);
             Door newDoor = Instantiate(GameStateData.instance.doorPrefab, gameObject.transform);
             newDoor.SetPosition(this.Coordinates + selectedDoorPlace.cords, selectedDoorPlace.orientation);
-            this.door = newDoor;
+            this.entryDoor = newDoor;
             newDoor.entryRoom = selectedDoorPlace.neighbour.GetComponentInParent<Room>();
+            AddDoor(newDoor);
+            newDoor.entryRoom.AddDoor(newDoor);
+        }
+
+        public void AddDoor(Door door)
+        {
+            doors.Add(door);
         }
 
         public int GetRating(int vacantPlacesCount)
@@ -121,6 +133,18 @@ namespace DASH._Dungeon
             newMob.transform.rotation = rotation;
             newMob.agressive = agressive;
             newMob.room = this;
+            mobs.Add(newMob);
+        }
+
+        public void MobDied(MobController mob)
+        {
+            if (!mobs.Contains(mob))
+            {
+                Debug.LogError(roomName + " doesn't contain " + mob.mobName);
+            } else
+            {
+                mobs.Remove(mob);
+            }
         }
     }
 }

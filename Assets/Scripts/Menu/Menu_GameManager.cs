@@ -6,17 +6,52 @@ namespace DASH._Menu
 {
     public class Menu_GameManager : MonoBehaviour
     {
+        #region Singleton
 
-        // Start is called before the first frame update
-        void Start()
+        public static Menu_GameManager instance;
+
+        private void Awake()
         {
-
+            instance = this;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+        #endregion
 
+        public int coins;
+        void Start()
+        {
+            if (!PlayerPrefs.HasKey("Coins"))
+            {
+                PlayerPrefs.SetInt("Coins", 0);
+                coins = 0;
+            }
+            else
+            {
+                coins = PlayerPrefs.GetInt("Coins");
+            }
+            Menu_UI.instance.UpdateCoinsUI();
+        }
+
+        public void AddCoins(int value)
+        {
+            coins += value;
+            PlayerPrefs.SetInt("Coins", coins);
+            Menu_UI.instance.UpdateCoinsUI();
+        }
+
+        public bool SubtractCoins(int value)
+        {
+            if(coins < value)
+            {
+                return false;
+            }
+            else
+            {
+                coins -= value;
+                PlayerPrefs.SetInt("Coins", coins);
+                Menu_UI.instance.UpdateCoinsUI();
+                return true;
+            }
         }
     }
 }

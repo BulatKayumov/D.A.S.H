@@ -20,6 +20,13 @@ namespace DASH._Player
             InvokeRepeating("Regenerate", 0, 1);
         }
 
+        public void TakeDamage(float value)
+        {
+            currentHP -= value;
+            currentHP = Mathf.Clamp(currentHP, 0, stats.maxHealth.GetStat());
+            ui.SetDamageText(value);
+        }
+
         public void Heal(float value)
         {
             currentHP += value;

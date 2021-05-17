@@ -9,8 +9,12 @@ public class Shop : MonoBehaviour
     private int number = 0;
     private bool CanvasIsWork = false;
 
+    public GameObject Next;
+    public GameObject Previous;
+    public GameObject[] weaponCharacters;
+
     [SerializeField]
-    private ShopCanvas shopCanvas;
+    private GameObject shopRoot;
     
     // Start is called before the first frame update
     void Start()
@@ -22,11 +26,11 @@ public class Shop : MonoBehaviour
     {
         if (InShop)
         {
-            shopCanvas.Canvas.SetActive(true);
+            shopRoot.SetActive(true);
             weapons[number].SetActive(true);
-            shopCanvas.weaponCharacters[number].SetActive(true);
-            shopCanvas.Next.SetActive(true);
-            shopCanvas.Previous.SetActive(true);
+            weaponCharacters[number].SetActive(true);
+            Next.SetActive(true);
+            Previous.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             CanvasIsWork = true;
@@ -36,34 +40,33 @@ public class Shop : MonoBehaviour
 
         if (number < 3 && CanvasIsWork)
         {
-            shopCanvas.Next.SetActive(true);
+            Next.SetActive(true);
         }
         else
         {
-            shopCanvas.Next.SetActive(false);
+            Next.SetActive(false);
         }
 
 
         if (number > 0 && CanvasIsWork)
         {
-            shopCanvas.Previous.SetActive(true);
+            Previous.SetActive(true);
         }
         else
         {
-            shopCanvas.Previous.SetActive(false);
+            Previous.SetActive(false);
         }
         
         if(!InShop)
         {
             
             weapons[number].SetActive(false);
-            shopCanvas.weaponCharacters[number].SetActive(false);
-            shopCanvas.Next.SetActive(false);
-            shopCanvas.Previous.SetActive(false);
+            weaponCharacters[number].SetActive(false);
+            Next.SetActive(false);
+            Previous.SetActive(false);
             CanvasIsWork = false;
-            shopCanvas.Canvas.SetActive(false);
+            shopRoot.SetActive(false);
         }
-
     }
 
 
@@ -79,8 +82,8 @@ public class Shop : MonoBehaviour
     {
         weapons[number].SetActive(false);
         weapons[number + 1].SetActive(true);
-        shopCanvas.weaponCharacters[number].SetActive(false);
-        shopCanvas.weaponCharacters[number + 1].SetActive(true);
+        weaponCharacters[number].SetActive(false);
+        weaponCharacters[number + 1].SetActive(true);
         number = number + 1;
     }
 
@@ -88,8 +91,8 @@ public class Shop : MonoBehaviour
     {
         weapons[number].SetActive(false);
         weapons[number - 1].SetActive(true);
-        shopCanvas.weaponCharacters[number].SetActive(false);
-        shopCanvas.weaponCharacters[number - 1].SetActive(true);
+        weaponCharacters[number].SetActive(false);
+        weaponCharacters[number - 1].SetActive(true);
         number = number - 1;
     }
 

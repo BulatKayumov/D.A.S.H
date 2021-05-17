@@ -31,6 +31,11 @@ namespace DASH._UI
         private Slider xpBarSlider;
         public Gradient xpBarGradient;
         public Image xpBarFill;
+        [SerializeField]
+        private GameObject bossHealthBar;
+        private Slider bossHealthBarSlider;
+        public Gradient bossHealthBarGradient;
+        public Image bossHealthBarFill;
         private GameStateData data;
         private Player player;
         private CharacterStats playerStats;
@@ -46,16 +51,29 @@ namespace DASH._UI
         private Text LevelText;
         private float healTextTimer = 0f;
         private float damageTextTimer = 0f;
+        private Boss boss;
+        private CharacterStats bossStats;
+        [SerializeField]
+        private GameObject bossUI;
+        [SerializeField]
+        private Text bossNameText;
+        private bool bossFightStarted;
+
+        [SerializeField]
+        private Text goldText;
 
         private void Start()
         {
             data = GameStateData.instance;
             healthBarSlider = healthBar.GetComponent<Slider>();
             xpBarSlider = xpBar.GetComponent<Slider>();
+            bossHealthBarSlider = bossHealthBar.GetComponent<Slider>();
             player = Player.instance;
             playerStats = player.GetComponent<CharacterStats>();
             playerHealth = player.GetComponent<PlayerHealth>();
             playerXP = player.GetComponent<PlayerXP>();
+            bossUI.SetActive(false);
+            bossFightStarted = false;
             interactText.gameObject.SetActive(false);
         }
 
@@ -81,6 +99,32 @@ namespace DASH._UI
 
             HealText.color = new Color(HealText.color.r, HealText.color.g, HealText.color.b, Mathf.Clamp(healTextTimer, 0, 1));
             DamageText.color = new Color(DamageText.color.r, DamageText.color.g, DamageText.color.b, Mathf.Clamp(damageTextTimer, 0, 1));
+
+            if (bossFightStarted)
+            {
+                UpdateBossUI();
+            }
+        }
+
+        public void UpdateCoinsUI()
+        {
+            goldText.text = GameManager.instance.coins.ToString();
+        }
+
+        public void BossFightStarted()
+        {
+            boss = GameManager.instance.boss;
+            bossStats = boss.GetComponent<CharacterStats>();
+            bossNameText.text = GameManager.instance.boss.mobName;
+            bossUI.SetActive(true);
+            bossFightStarted = true;
+        }
+
+        public void UpdateBossUI()
+        {
+            bossHealthBarSlider.maxValue = bossStats.maxHealth.GetStat();
+            bossHealthBarSlider.value = boss.currentHP;
+            bossHealthBarFill.color = bossHealthBarGradient.Evaluate(bossHealthBarSlider.normalizedValue);
         }
 
         public void SetMaxHealth(float health)

@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 20
+    baseValue: 30
   damage:
-    baseValue: 2
+    baseValue: 10
   attackSpeed:
     baseValue: 100
   armor:
@@ -206,6 +206,10 @@ MonoBehaviour:
     baseValue: 0.1
   speed:
     baseValue: 1
+  criticalStrikeChance:
+    baseValue: 0.07
+  criticalStrikeModifier:
+    baseValue: 1.5
 --- !u!114 &119640928947260164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a18aa644a637d54c9467c901c332673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobName: 
+  mobName: Slime
   agressive: 0
   attackDistance: 2
   room: {fileID: 0}
@@ -271,6 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c6492e49eeee141bad556c1912b1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleHitTime: 0.33
+  criticalHitTime: 0.5
 --- !u!114 &7398379530092179008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830e86ff2e5c8c345b7db40852484f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleAttacks:
+  - Attack1
+  criticalAttacks:
+  - Attack2
 --- !u!65 &5105753847347690096
 BoxCollider:
   m_ObjectHideFlags: 0

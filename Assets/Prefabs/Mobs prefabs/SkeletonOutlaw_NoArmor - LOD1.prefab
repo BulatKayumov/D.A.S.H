@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a18aa644a637d54c9467c901c332673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobName: 
+  mobName: Skeleton
   agressive: 0
   attackDistance: 1
   room: {fileID: 0}
@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c6492e49eeee141bad556c1912b1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleHitTime: 0.37
+  criticalHitTime: 0.5
 --- !u!114 &6664038248461304792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830e86ff2e5c8c345b7db40852484f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleAttacks:
+  - Attack1
+  - Attack2
+  criticalAttacks:
+  - Attack3
 --- !u!114 &4651682071141941472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +356,10 @@ MonoBehaviour:
     baseValue: 0.3
   speed:
     baseValue: 2
+  criticalStrikeChance:
+    baseValue: 0.2
+  criticalStrikeModifier:
+    baseValue: 1.7
 --- !u!65 &2830077224553825284
 BoxCollider:
   m_ObjectHideFlags: 0

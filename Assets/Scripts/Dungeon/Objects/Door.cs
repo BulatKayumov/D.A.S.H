@@ -25,6 +25,7 @@ namespace DASH._Dungeon
 
         private bool opened = false;
 
+
         protected override void Start()
         {
             base.Start();
@@ -54,7 +55,7 @@ namespace DASH._Dungeon
             opened = true;
             ui.HideInteractText();
             interactText = closeText;
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSeconds(1f);
             ready = true;
             if (playerInTrigger)
             {
@@ -70,7 +71,7 @@ namespace DASH._Dungeon
             opened = true;
             ui.HideInteractText();
             interactText = openText;
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSeconds(1f);
             ready = true;
             if (playerInTrigger)
             {
@@ -86,12 +87,14 @@ namespace DASH._Dungeon
                 opened = false;
             }
             ready = false;
+            interactText = "";
             ui.HideInteractText();
         }
 
         public void Unlock()
         {
             ready = true;
+            interactText = openText;
             if (playerInTrigger)
             {
                 ui.ShowInteractText(interactText);

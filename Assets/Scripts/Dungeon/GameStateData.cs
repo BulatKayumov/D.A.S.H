@@ -28,14 +28,15 @@ namespace DASH._Dungeon
         #endregion
 
         public GameObject roomsRoot;
-        public GameObject Player;
         public Door doorPrefab;
         public WallEntrance wallEntrancePrefab;
 
         public Room[] RoomPrefabs;
+        public BossRoom BossRoomPrefab;
         //public Interior[] interiors;
         public GameObject mobsRoot;
         public MobController[] mobPrefabs;
+        public Boss bossPrefab;
         public Player PlayerPrefab;
         public Vector3 playerSpawnCords = new Vector3(0, 0, 0);
         public float[] levelUpXPValues;

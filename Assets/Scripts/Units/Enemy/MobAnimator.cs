@@ -8,7 +8,10 @@ namespace DASH._Units
     public class MobAnimator : MonoBehaviour
     {
         private Animator animator;
-        string[] attacks = { "Attack1", "Attack2", "Attack3" };
+        [SerializeField]
+        private string[] simpleAttacks;
+        [SerializeField]
+        private string[] criticalAttacks;
         float speedPercent;
         CharacterStats stats;
         NavMeshAgent agent;
@@ -26,9 +29,14 @@ namespace DASH._Units
             animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
         }
 
-        public void PlayAttackAnimation()
+        public void PlaySimpleAttackAnimation()
         {
-            animator.SetTrigger(attacks[Random.Range(0, 3)]);
+            animator.SetTrigger(simpleAttacks[Random.Range(0, simpleAttacks.Length)]);
+        }
+
+        public void PlayCriticalAttackAnimation()
+        {
+            animator.SetTrigger(criticalAttacks[Random.Range(0, criticalAttacks.Length)]);
         }
 
         public void PlayDeathAnimation()

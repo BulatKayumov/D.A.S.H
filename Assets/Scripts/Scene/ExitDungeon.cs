@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DASH._Dungeon;
 
 namespace DASH._Menu
 {
@@ -11,13 +12,6 @@ namespace DASH._Menu
         public GameObject ExitQuestion;
         public GameObject ON;
         public GameObject OFF;
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !Exit.activeSelf && !ExitQuestion.activeSelf)
@@ -52,7 +46,7 @@ namespace DASH._Menu
         }
         public void LeaveDungeonPlace()
         {
-            Menu_SceneManager.instance.NewMenu();
+            GameManager.instance.LeaveDungeon();
         }
 
         public void xActivate()

@@ -21,6 +21,7 @@ namespace DASH._Menu
         public void NewGame()
         {
             Debug.Log("load 1");
+            PlayerPrefs.Save();
             SceneManager.LoadScene(1);
         }
         public void NewMenu()

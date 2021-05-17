@@ -2904,9 +2904,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5997124891188516915}
-  - component: {fileID: 8339919168663563872}
+  - component: {fileID: 6150443253804680872}
   m_Layer: 0
-  m_Name: Room3x3
+  m_Name: BossRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2932,7 +2932,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8339919168663563872
+--- !u!114 &6150443253804680872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2941,10 +2941,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7963506311530239793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3918e21b55436854499d3053ad97ef65, type: 3}
+  m_Script: {fileID: 11500000, guid: 03d0685a1267f7143b102cbae7ea3ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Room 3x3
+  roomName: Boss Room
   index: 0
   way: 
   doorPlaces:
@@ -2961,7 +2961,8 @@ MonoBehaviour:
   - {fileID: 5060642033233480394}
   - {fileID: 3116449554446693650}
   triggerCubesRoot: {fileID: 2046865666047175506}
-  door: {fileID: 0}
+  entryDoor: {fileID: 0}
+  doors: []
   Coordinates: {x: 0, y: 0}
   size: {x: 3, y: 3}
   rating: 40
@@ -2971,6 +2972,7 @@ MonoBehaviour:
   vacantPlacesRequiredAmount: 3
   doorsLimit: 1
   selectedDoorPlace: {fileID: 0}
+  mobs: []
 --- !u!208 &2389234560189298165
 NavMeshObstacle:
   m_ObjectHideFlags: 0
