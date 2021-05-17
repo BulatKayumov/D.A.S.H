@@ -41,7 +41,6 @@ namespace DASH._Units
                 if(attackTimer <= 0)
                 {
                     float random = Random.Range(0f, 1f);
-                    Debug.Log("Random = " + random);
                     if(stats.criticalStrikeChance.GetStat() > random)
                     {
                         animator.PlayCriticalAttackAnimation();

@@ -2011,7 +2011,8 @@ MonoBehaviour:
   - {fileID: 4760464497546812964}
   - {fileID: 5060642033233480394}
   triggerCubesRoot: {fileID: 2046865666047175506}
-  door: {fileID: 0}
+  entryDoor: {fileID: 0}
+  doors: []
   Coordinates: {x: 0, y: 0}
   size: {x: 2, y: 2}
   rating: 30
@@ -2021,6 +2022,7 @@ MonoBehaviour:
   vacantPlacesRequiredAmount: 3
   doorsLimit: 5
   selectedDoorPlace: {fileID: 0}
+  mobs: []
   mobsCount: 10
 --- !u!1 &8177747718595866785
 GameObject:
@@ -2191,7 +2193,7 @@ Transform:
   m_GameObject: {fileID: 8751659290814858215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 17, y: 3, z: 17}
+  m_LocalScale: {x: 13, y: 3, z: 13}
   m_Children: []
   m_Father: {fileID: 5694277857387177948}
   m_RootOrder: 0

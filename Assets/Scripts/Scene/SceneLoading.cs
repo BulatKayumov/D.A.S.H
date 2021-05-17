@@ -19,7 +19,6 @@ public class SceneLoading : MonoBehaviour
     IEnumerator AsyncLoad()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneID);
-        Debug.Log("dif3d");
         while (!operation.isDone)
         {
             float progress = operation.progress / 0.9f;

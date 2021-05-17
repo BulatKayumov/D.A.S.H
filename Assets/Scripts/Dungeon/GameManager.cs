@@ -119,6 +119,7 @@ namespace DASH._Dungeon
             int currentCoins = PlayerPrefs.GetInt("Coins");
             PlayerPrefs.SetInt("Coins", currentCoins + coins);
             PlayerPrefs.Save();
+            Cursor.lockState = CursorLockMode.None;
             Dungeon_SceneManager.instance.ReturnToMenu();
         }
     }

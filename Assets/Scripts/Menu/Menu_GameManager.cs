@@ -30,6 +30,8 @@ namespace DASH._Menu
                 coins = PlayerPrefs.GetInt("Coins");
             }
             Menu_UI.instance.UpdateCoinsUI();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         public void AddCoins(int value)

@@ -72,7 +72,7 @@ namespace DASH._Dungeon
 
         protected virtual void RoomEntry()
         {
-            Debug.Log("В комнату вошли");
+
         }
 
         public void RotateRandomly()

@@ -40,11 +40,11 @@ namespace DASH._Menu
             {
                 if (PlayerPrefs.GetInt("Рубашка") == 1)
                 {
-                    torso[2].gameObject.SetActive(true);
+                    torso[0].gameObject.SetActive(true);
                 }
                 else
                 {
-                    torso[2].gameObject.SetActive(false);
+                    torso[0].gameObject.SetActive(false);
                 }
             }
 
@@ -64,11 +64,11 @@ namespace DASH._Menu
             {
                 if (PlayerPrefs.GetInt("Тяжелые доспехи") == 1)
                 {
-                    torso[0].gameObject.SetActive(true);
+                    torso[2].gameObject.SetActive(true);
                 }
                 else
                 {
-                    torso[0].gameObject.SetActive(false);
+                    torso[2].gameObject.SetActive(false);
                 }
             }
 
@@ -76,11 +76,11 @@ namespace DASH._Menu
             {
                 if (PlayerPrefs.GetInt("Брюки") == 1)
                 {
-                    legs[2].gameObject.SetActive(true);
+                    legs[0].gameObject.SetActive(true);
                 }
                 else
                 {
-                    legs[2].gameObject.SetActive(false);
+                    legs[0].gameObject.SetActive(false);
                 }
             }
 
@@ -100,11 +100,11 @@ namespace DASH._Menu
             {
                 if (PlayerPrefs.GetInt("Тяжелые поножи") == 1)
                 {
-                    legs[0].gameObject.SetActive(true);
+                    legs[2].gameObject.SetActive(true);
                 }
                 else
                 {
-                    legs[0].gameObject.SetActive(false);
+                    legs[2].gameObject.SetActive(false);
                 }
             }
             if (PlayerPrefs.HasKey("currentTorso"))

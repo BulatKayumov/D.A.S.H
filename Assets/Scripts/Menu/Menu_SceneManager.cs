@@ -20,19 +20,9 @@ namespace DASH._Menu
 
         public void NewGame()
         {
-            Debug.Log("load 1");
+
             PlayerPrefs.Save();
             SceneManager.LoadScene(1);
-        }
-        public void NewMenu()
-        {
-            Debug.Log("load 0");
-            SceneManager.LoadScene(0);
-        }
-        public void NewShop()
-        {
-            Debug.Log("load 3");
-            SceneManager.LoadScene(3);
         }
     }
 }

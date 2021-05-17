@@ -16,7 +16,6 @@ namespace DASH._Menu
 
         public void Equip()
         {
-            Equipment.instance.EquipItem(groupId, id);
             if (groupId == 0)
             {
                 PlayerPrefs.SetInt("currentLegs", id);
@@ -27,11 +26,11 @@ namespace DASH._Menu
             }
             equipButton.gameObject.SetActive(false);
             unequipButton.gameObject.SetActive(true);
+            Equipment.instance.EquipItem(groupId, id);
         }
 
         public void Unequip()
         {
-            Equipment.instance.EquipItem(groupId, 0);
             if (groupId == 0)
             {
                 PlayerPrefs.SetInt("currentLegs", 0);
@@ -42,6 +41,7 @@ namespace DASH._Menu
             }
             unequipButton.gameObject.SetActive(false);
             equipButton.gameObject.SetActive(true);
+            Equipment.instance.EquipItem(groupId, 0);
         }
     }
 }

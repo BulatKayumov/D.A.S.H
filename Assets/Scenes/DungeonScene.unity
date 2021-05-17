@@ -1254,6 +1254,12 @@ MonoBehaviour:
   - 50
   - 70
   - 100
+  - 130
+  - 160
+  - 200
+  - 240
+  - 290
+  - 350
 --- !u!114 &538403178
 MonoBehaviour:
   m_ObjectHideFlags: 0

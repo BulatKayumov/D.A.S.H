@@ -57,7 +57,7 @@ namespace DASH._Dungeon
 
         protected virtual void Interact()
         {
-            Debug.Log("Interact with " + gameObject.name);
+
         }
     }
 }

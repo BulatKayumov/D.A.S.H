@@ -19,7 +19,6 @@ namespace DASH._Player
         {
             if (other.GetComponent<MobController>() && combat.isAttacking)
             {
-                Debug.Log("Sword trigger");
                 MobController mob = other.GetComponent<MobController>();
                 combat.Damage(mob);
             }
