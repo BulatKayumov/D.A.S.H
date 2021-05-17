@@ -470,6 +470,10 @@ MonoBehaviour:
     baseValue: 1
   speed:
     baseValue: 3
+  criticalStrikeChance:
+    baseValue: 0
+  criticalStrikeModifier:
+    baseValue: 0
 --- !u!114 &2380597335889684837
 MonoBehaviour:
   m_ObjectHideFlags: 0
