@@ -22,17 +22,23 @@ namespace DASH._Player
         private CharacterStats stats;
         private PlayerHealth health;
         public Camera playerCamera;
+        public bool alive;
         private void Start()
         {
+            alive = true;
             stats = GetComponent<CharacterStats>();
             health = GetComponent<PlayerHealth>();
         }
 
         public float TakeDamage(float value)
         {
-            float damage = value - stats.armor.GetStat();
-            health.TakeDamage(damage);
-            return damage;
+            if (alive)
+            {
+                float damage = value - stats.armor.GetStat();
+                health.TakeDamage(damage);
+                return damage;
+            }
+            else return 0;
         }
     }
 }

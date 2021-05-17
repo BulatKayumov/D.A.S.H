@@ -48,82 +48,86 @@ namespace DASH._Player
 
         void Update()
         {
-            walkingSpeed = stats.speed.GetStat();
-            runningSpeed = walkingSpeed * 2;
-            rollingSpeed = walkingSpeed * 1.5f;
-            if (characterController.isGrounded && canMove)
+            if (Player.instance.alive)
             {
-                Vector3 forward = transform.TransformDirection(Vector3.forward);
-                Vector3 right = transform.TransformDirection(Vector3.right);
-
-                bool isRunning = Input.GetKey(KeyCode.LeftShift);
-
-                curSpeedX = (isRolling ? rollingSpeed : (isRunning ? runningSpeed : walkingSpeed)) * Input.GetAxis("Vertical");
-                curSpeedY = (isRolling ? rollingSpeed : (isRunning ? runningSpeed : walkingSpeed)) * Input.GetAxis("Horizontal");
-                movementDirectionY = moveDirection.y;
-                moveDirection = forward * curSpeedX + right * curSpeedY;
-
-                if (Input.GetButton("Jump") && !isRolling)
+                walkingSpeed = stats.speed.GetStat();
+                runningSpeed = walkingSpeed * 2;
+                rollingSpeed = walkingSpeed * 1.5f;
+                if (characterController.isGrounded && canMove)
                 {
-                    animator.Jump();
-                    moveDirection.y = jumpSpeed;
+                    Vector3 forward = transform.TransformDirection(Vector3.forward);
+                    Vector3 right = transform.TransformDirection(Vector3.right);
+
+                    bool isRunning = Input.GetKey(KeyCode.LeftShift);
+
+                    curSpeedX = (isRolling ? rollingSpeed : (isRunning ? runningSpeed : walkingSpeed)) * Input.GetAxis("Vertical");
+                    curSpeedY = (isRolling ? rollingSpeed : (isRunning ? runningSpeed : walkingSpeed)) * Input.GetAxis("Horizontal");
+                    movementDirectionY = moveDirection.y;
+                    moveDirection = forward * curSpeedX + right * curSpeedY;
+
+                    if (Input.GetButton("Jump") && !isRolling)
+                    {
+                        animator.Jump();
+                        moveDirection.y = jumpSpeed;
+                    }
+                    else
+                    {
+                        moveDirection.y = movementDirectionY;
+                    }
+                    characterController.Move(moveDirection * Time.deltaTime);
                 }
                 else
                 {
-                    moveDirection.y = movementDirectionY;
+                    moveDirection.y -= gravity * Time.deltaTime;
+                    characterController.Move(moveDirection * Time.deltaTime);
                 }
-                characterController.Move(moveDirection * Time.deltaTime);
-            }
-            else
-            {
-                moveDirection.y -= gravity * Time.deltaTime;
-                characterController.Move(moveDirection * Time.deltaTime);
-            }
 
-            // rolling
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                if (!isRolling && characterController.isGrounded)
+                // rolling
+                if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    StartCoroutine("Roll");
-                }
-            }
-
-            if (canMove)
-            {
-                rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-                rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-                if (Physics.Linecast(LookPoint.position, LookPoint.position + transform.rotation * offset, out hit))
-                {
-                    if (Vector3.Distance(LookPoint.position, hit.point) < offset.magnitude)
+                    if (!isRolling && characterController.isGrounded)
                     {
-                        playerCamera.transform.position = hit.point;
+                        StartCoroutine("Roll");
+                    }
+                }
+
+                if (canMove)
+                {
+                    rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+                    rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+                    playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+                    transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+                    if (Physics.Linecast(LookPoint.position, LookPoint.position + transform.rotation * offset, out hit))
+                    {
+                        if (Vector3.Distance(LookPoint.position, hit.point) < offset.magnitude)
+                        {
+                            playerCamera.transform.position = hit.point;
+                        }
+                        else
+                        {
+                            playerCamera.transform.localPosition = offset;
+                        }
                     }
                     else
                     {
                         playerCamera.transform.localPosition = offset;
                     }
                 }
+
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    combat.Attack();
+                }
+                if (Time.timeScale == 0)
+                {
+                    canMove = false;
+                }
                 else
                 {
-                    playerCamera.transform.localPosition = offset;
+                    canMove = true;
                 }
-            }
 
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                combat.Attack();
-            }
-            if (Time.timeScale == 0)
-            {
-                canMove = false;
-            }
-            else
-            {
-                canMove = true;
             }
         }
 

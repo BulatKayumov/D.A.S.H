@@ -51,8 +51,56 @@ namespace DASH._Dungeon
             Player player = Instantiate(data.PlayerPrefab, data.playerSpawnCords, Quaternion.identity);
             CharacterStats stats = player.GetComponent<CharacterStats>();
             PlayerEquipment equipment = player.GetComponent<PlayerEquipment>();
-            equipment.TorsoEquip(0);
-            equipment.LegsEquip(0);
+            if (PlayerPrefs.HasKey("currentTorso"))
+            {
+                equipment.TorsoEquip(PlayerPrefs.GetInt("currentTorso"));
+                if (PlayerPrefs.GetInt("currentTorso") == 3)
+                {
+                    stats.maxHealth.AddModifier(50);
+                    stats.damage.AddModifier(5);
+                }
+                if (PlayerPrefs.GetInt("currentTorso") == 2)
+                {
+                    stats.maxHealth.AddModifier(100);
+                    stats.damage.AddModifier(10);
+                    stats.armor.AddModifier(1);
+                }
+                if (PlayerPrefs.GetInt("currentTorso") == 1)
+                {
+                    stats.maxHealth.AddModifier(200);
+                    stats.damage.AddModifier(25);
+                    stats.armor.AddModifier(3);
+                }
+            }
+            else
+            {
+                equipment.TorsoEquip(0);
+            }
+            if (PlayerPrefs.HasKey("currentLegs"))
+            {
+                equipment.LegsEquip(PlayerPrefs.GetInt("currentLegs"));
+                if (PlayerPrefs.GetInt("currentLegs") == 3)
+                {
+                    stats.maxHealth.AddModifier(50);
+                    stats.regeneration.AddModifier(1);
+                }
+                if (PlayerPrefs.GetInt("currentLegs") == 2)
+                {
+                    stats.maxHealth.AddModifier(100);
+                    stats.regeneration.AddModifier(3);
+                    stats.armor.AddModifier(1);
+                }
+                if (PlayerPrefs.GetInt("currentLegs") == 1)
+                {
+                    stats.maxHealth.AddModifier(200);
+                    stats.regeneration.AddModifier(7);
+                    stats.armor.AddModifier(3);
+                }
+            }
+            else
+            {
+                equipment.LegsEquip(0);
+            }
         }
 
         public void EarnCoins(int value)

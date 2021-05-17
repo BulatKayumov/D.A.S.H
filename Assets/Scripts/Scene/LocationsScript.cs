@@ -13,6 +13,8 @@ namespace DASH._Menu
 
         [SerializeField]
         private Shop shop;
+        [SerializeField]
+        private Equipment equipment;
         public void LocationsChangeVisible()
         {
             if (Locations.activeSelf)
@@ -42,6 +44,14 @@ namespace DASH._Menu
             else
             {
                 shop.CloseShop();
+            }
+            if (currentIndex == 2)
+            {
+                equipment.OpenEquipment();
+            }
+            else
+            {
+                equipment.CloseEquipment();
             }
         }
 

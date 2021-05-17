@@ -48,5 +48,10 @@ namespace DASH._Player
         {
             animator.SetTrigger("Roll");
         }
+
+        public void PlayDeathAnimation()
+        {
+            animator.SetTrigger("Dead");
+        }
     }
 }

@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 538403176}
   - component: {fileID: 538403180}
   - component: {fileID: 538403181}
+  - component: {fileID: 538403182}
   m_Layer: 0
   m_Name: ' GameManager'
   m_TagString: Untagged
@@ -1408,6 +1409,18 @@ MonoBehaviour:
   bossUI: {fileID: 771344457}
   bossNameText: {fileID: 981918577}
   goldText: {fileID: 5988480691001035746}
+--- !u!114 &538403182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538403175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c555d81b8ad08ee419b14aabba403337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
